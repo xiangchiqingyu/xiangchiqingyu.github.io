@@ -6,19 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>spring-mvc源码解析 | 梁 一 一 的博客</title>
+  <title>spring-mvc源码解析一 | 梁 一 一 的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#一、root applicationcontext的初始化内容 #二、servlet applicationcontext的初始化内容">
+  <meta name="description" content="一、root applicationcontext的初始化首先看一下整合spring-mvc后的基本配置web.xml文件 123456789101112131415161718192021222324252627282930spring容器的配置文件，在初始化root applicationcontext的过程中将被contextLoaderlistener调用&lt;context-para">
 <meta property="og:type" content="article">
-<meta property="og:title" content="spring-mvc源码解析">
+<meta property="og:title" content="spring-mvc源码解析一">
 <meta property="og:url" content="http://yoursite.com/2020/03/08/spring-mvc%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/index.html">
 <meta property="og:site_name" content="梁 一 一 的博客">
-<meta property="og:description" content="#一、root applicationcontext的初始化内容 #二、servlet applicationcontext的初始化内容">
+<meta property="og:description" content="一、root applicationcontext的初始化首先看一下整合spring-mvc后的基本配置web.xml文件 123456789101112131415161718192021222324252627282930spring容器的配置文件，在初始化root applicationcontext的过程中将被contextLoaderlistener调用&lt;context-para">
+<meta property="og:image" content="http://yoursite.com/1.png">
 <meta property="article:published_time" content="2020-03-08T03:37:12.000Z">
-<meta property="article:modified_time" content="2020-03-08T03:45:39.394Z">
+<meta property="article:modified_time" content="2020-03-08T11:29:04.604Z">
 <meta property="article:author" content="梁 一 一">
-<meta property="article:tag" content="spring-mvc的初始化与请求逻辑处理">
+<meta property="article:tag" content="root applicationcontext的初始化">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/1.png">
   
     <link rel="alternative" href="/atom.xml" title="梁 一 一 的博客" type="application/atom+xml">
   
@@ -165,7 +167,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      spring-mvc源码解析
+      spring-mvc源码解析一
     </h1>
   
 
@@ -179,8 +181,36 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<h3 id="一、root-applicationcontext的初始化"><a href="#一、root-applicationcontext的初始化" class="headerlink" title="#一、root applicationcontext的初始化"></a>#一、root applicationcontext的初始化</h3><p>内容</p>
-<h3 id="二、servlet-applicationcontext的初始化"><a href="#二、servlet-applicationcontext的初始化" class="headerlink" title="#二、servlet applicationcontext的初始化"></a>#二、servlet applicationcontext的初始化</h3><p>内容</p>
+<h3 id="一、root-applicationcontext的初始化"><a href="#一、root-applicationcontext的初始化" class="headerlink" title="一、root applicationcontext的初始化"></a>一、root applicationcontext的初始化</h3><p>首先看一下整合spring-mvc后的基本配置web.xml文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">spring容器的配置文件，在初始化root applicationcontext的过程中将被contextLoaderlistener调用</span><br><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:applicationContext.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line"></span><br><span class="line">配置监听器即为上下文载入器，常用的就是这个contextLoaderListener监听器</span><br><span class="line">  <span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span></span><br><span class="line">          org.springframework.web.context.ContextLoaderListener</span><br><span class="line">      <span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">配置servlet类，实际上是实现了servlet接口的Dispacherservler类，这个类可以说是springmvc的核心类</span><br><span class="line">      <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springmvc<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">      初始化springmvc的配置文件路径</span><br><span class="line">      <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:springmvc-config.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">      首先启动</span><br><span class="line">      <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">拦截所有请求</span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springmvc<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>同时要注意写这些标签的顺序有要求，按照我这个顺序就可以。</p>
+<hr>
+<p>​    然后我们在idea中找到org.springframework:spring-web.jar中的contextLoaderListener类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ContextLoaderListener</span> <span class="keyword">extends</span> <span class="title">ContextLoader</span> <span class="keyword">implements</span> <span class="title">ServletContextListener</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ContextLoaderListener</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ContextLoaderListener</span><span class="params">(WebApplicationContext context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">root applicationcontext的初始化方法，传入了一个事件的参数，然后就调用initWebApplicationContext方法来初始化根上下文。那我们就可以知道初始化一个根上下文是需要两个因素分别是这个时间event和这个方法。大家再看这个上下文加载监听类实现了一个ServletContextListener接口，同时继承了一个ContextLoader类，那我们可以猜想是不是通过这两个类来分别获取这两个因素，那么同时也就意味着这个类其实作用就是类似一个介质，将产生两个因素的两个类结合在一起。</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextInitialized</span><span class="params">(ServletContextEvent event)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.initWebApplicationContext(event.getServletContext());</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">这个方法是根上下文的销毁</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextDestroyed</span><span class="params">(ServletContextEvent event)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.closeWebApplicationContext(event.getServletContext());</span><br><span class="line">        ContextCleanupListener.cleanupAttributes(event.getServletContext());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>我们接下来就验证我们的猜想首先看一下servletcontextlistener这个类</p>
+<p>大家直接在idea中按住ctrl键然后鼠标放在想要打开的类上面稍微移动出现下划线后点击就可以进入到该类中而不需要在jar包中查找，这个快捷键对于学习源代码很实用。ServletContextListener类是在</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;javax.servlet&lt;&#x2F;groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;servlet-api&lt;&#x2F;artifactId&gt;</span><br><span class="line">      &lt;version&gt;2.5&lt;&#x2F;version&gt;</span><br><span class="line">    &lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>依赖中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ServletContextListener</span> <span class="keyword">extends</span> <span class="title">EventListener</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">contextInitialized</span><span class="params">(ServletContextEvent var1)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">contextDestroyed</span><span class="params">(ServletContextEvent var1)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们看到这个类里面有上下文初始化和销毁的方法。然后我们再看这个初始化方法中传入的参数到底是什么类。然后再追踪到ServletContextEvent中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ServletContext <span class="title">getServletContext</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (ServletContext)<span class="keyword">super</span>.getSource();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>其实看到这个getServletContext()方法的时候，这条支路就算走的差不多了，剩下的再去看其实会越来越有难度，但是我们对于这条支路的逻辑处理也分析的差不多了。这个方法其实作用就是再servletcontext容器初始化的时候会被event监听到，然后通过这个方法可以得到这个servletcontext，在ContextLoaderListener中的根上下文初始化方法中的initWebApplicationContext方法中的参数就是一个servletcontext类。</p>
+<hr>
+<p>为了加深大家对与这个监听servletcontext的过程，可以自己写一个测试类。为了方便大家更好的理解，我想告诉大家这个servletcontext就可以理解为整个web的环境，然后根上下文即为root applicationcontext这个是spring容器的上下文也就是IOC容器的上下文，然后根上下文的创建需要servletcontext并且生成根上下文之后会在servletcontext中记录。然后还有一个servlet applicationcontext这个是springmvc的上下文，同时他也是根上下文的子类，因为这个上下文的创建需要根上下文和servletcontext传入参数。因为我在学习的过程中对于这个问题困扰了好久，看了无数篇源码分析才理解的，我哭辽。接着说测试类</p>
+<h5 id="第一步：创建自定义的监听器并且实现servletcontextlistener类"><a href="#第一步：创建自定义的监听器并且实现servletcontextlistener类" class="headerlink" title="第一步：创建自定义的监听器并且实现servletcontextlistener类"></a>第一步：创建自定义的监听器并且实现servletcontextlistener类</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Mycontext</span> <span class="keyword">implements</span> <span class="title">ServletContextListener</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> ServletContext context;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextInitialized</span><span class="params">(ServletContextEvent servletContextEvent)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.context=servletContextEvent.getServletContext();</span><br><span class="line">        context.setAttribute(<span class="string">"mycontext"</span>,<span class="string">"this is mycontext"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextDestroyed</span><span class="params">(ServletContextEvent servletContextEvent)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.context=<span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="第二步：在web-xml中配置这个监听类和测试servelt类"><a href="#第二步：在web-xml中配置这个监听类和测试servelt类" class="headerlink" title="第二步：在web.xml中配置这个监听类和测试servelt类"></a>第二步：在web.xml中配置这个监听类和测试servelt类</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span></span><br><span class="line">        com.servlet.Mycontext</span><br><span class="line">      <span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br><span class="line">完成第三步之后添加一下代码</span><br><span class="line"> <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>contextServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>com.servlet.contextServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>contextServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/test<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="第三步：写一个servlet测试"><a href="#第三步：写一个servlet测试" class="headerlink" title="第三步：写一个servlet测试"></a>第三步：写一个servlet测试</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">contextServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">注意给这个servlet配置请求路径为/test</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        String mycontext = (String) getServletContext().getAttribute(<span class="string">"mycontext"</span>);</span><br><span class="line">        System.out.println(mycontext);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<img src="/1.png" alt="test后的后台显示" style="zoom: 80%;" />
+
 
       
 
@@ -215,7 +245,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring-mvc的初始化与请求逻辑处理</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">root applicationcontext的初始化</a>
         		</li>
       		
 		</ul>
@@ -283,16 +313,6 @@
 </article>
 
   
-<nav id="article-nav">
-  
-  
-    <a href="/2020/03/08/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -413,7 +433,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring-mvc的初始化与请求逻辑处理</a>
+                <a href="javascript:void(0)" class="js-tag color3">root applicationcontext的初始化</a>
               </li>
             
             <div class="clearfix"></div>
