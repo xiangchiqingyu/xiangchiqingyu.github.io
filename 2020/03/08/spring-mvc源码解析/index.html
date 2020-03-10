@@ -14,13 +14,13 @@
 <meta property="og:url" content="https://xiangchiqingyu.github.io/2020/03/08/spring-mvc%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/index.html">
 <meta property="og:site_name" content="梁 一 一 的博客">
 <meta property="og:description" content="一、root applicationcontext的初始化首先看一下整合spring-mvc后的基本配置web.xml文件 123456789101112131415161718192021222324252627282930spring容器的配置文件，在初始化root applicationcontext的过程中将被contextLoaderlistener调用&lt;context-para">
-<meta property="og:image" content="https://xiangchiqingyu.github.io/1.png">
+<meta property="og:image" content="http://q6yboa1az.bkt.clouddn.com/1.png">
 <meta property="article:published_time" content="2020-03-08T03:37:12.000Z">
-<meta property="article:modified_time" content="2020-03-09T04:23:33.581Z">
+<meta property="article:modified_time" content="2020-03-10T00:59:57.464Z">
 <meta property="article:author" content="梁 一 一">
 <meta property="article:tag" content="root applicationcontext的初始化">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://xiangchiqingyu.github.io/1.png">
+<meta name="twitter:image" content="http://q6yboa1az.bkt.clouddn.com/1.png">
   
     <link rel="alternative" href="/atom.xml" title="梁 一 一 的博客" type="application/atom+xml">
   
@@ -191,7 +191,7 @@
 
 <h5 id="第三步：写一个servlet测试"><a href="#第三步：写一个servlet测试" class="headerlink" title="第三步：写一个servlet测试"></a>第三步：写一个servlet测试</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">contextServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">注意给这个servlet配置请求路径为/test</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        String mycontext = (String) getServletContext().getAttribute(<span class="string">"mycontext"</span>);</span><br><span class="line">        System.out.println(mycontext);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<img src="/1.png" alt="test后的后台显示" style="zoom: 80%;" />
+<img src=" http://q6yboa1az.bkt.clouddn.com/1.png " alt="test后的后台显示" style="zoom: 80%;" />
 
 <hr>
 <hr>
