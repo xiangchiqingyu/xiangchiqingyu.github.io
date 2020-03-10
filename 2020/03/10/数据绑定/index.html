@@ -6,13 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://xiangchiqingyu.github.io">
-  <title>梁 一 一 的博客</title>
+  <title>&#39;数据绑定&#39; | 梁 一 一 的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="梁 一 一 的博客">
-<meta property="og:url" content="https://xiangchiqingyu.github.io/index.html">
+  <meta name="description" content="一、什么是数据绑定？就是将服务器接收到的请求url中的数据与后台方法参数建立连接的过程。  二、默认的数据绑定默认的数据绑定，就是由后台中的提供的httprequestRequest、httprequestResponse、model、httpsession来进行数据绑定，比如： 1234@RequestMapping(&quot;&#x2F;test&quot;)    public String test()&amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="&#39;数据绑定&#39;">
+<meta property="og:url" content="https://xiangchiqingyu.github.io/2020/03/10/%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/index.html">
 <meta property="og:site_name" content="梁 一 一 的博客">
+<meta property="og:description" content="一、什么是数据绑定？就是将服务器接收到的请求url中的数据与后台方法参数建立连接的过程。  二、默认的数据绑定默认的数据绑定，就是由后台中的提供的httprequestRequest、httprequestResponse、model、httpsession来进行数据绑定，比如： 1234@RequestMapping(&quot;&#x2F;test&quot;)    public String test()&amp;#123;">
+<meta property="article:published_time" content="2020-03-10T09:45:07.000Z">
+<meta property="article:modified_time" content="2020-03-10T11:55:45.261Z">
 <meta property="article:author" content="梁 一 一">
+<meta property="article:tag" content="requestmapping注解详解">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="梁 一 一 的博客" type="application/atom+xml">
@@ -135,16 +140,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-数据绑定" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-数据绑定" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/10/%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/">&#39;数据绑定&#39;</a>
+    <h1 class="article-title" itemprop="name">
+      &#39;数据绑定&#39;
     </h1>
   
 
@@ -161,11 +164,57 @@
 <hr>
 <h4 id="二、默认的数据绑定"><a href="#二、默认的数据绑定" class="headerlink" title="二、默认的数据绑定"></a>二、默认的数据绑定</h4><p>默认的数据绑定，就是由后台中的提供的httprequestRequest、httprequestResponse、model、httpsession来进行数据绑定，比如：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/test"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hello1"</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2020/03/10/%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/#more">more >></a>
-        
+
+<a id="more"></a>
+
+<h4 id="三、简单数据格式绑定"><a href="#三、简单数据格式绑定" class="headerlink" title="三、简单数据格式绑定"></a>三、简单数据格式绑定</h4><p>相信大家一开始学习ssm框架写的Controller中的逻辑处理方法的参数大都是只是一般的int、string类型，比如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Resource</span>(name = <span class="string">"userService"</span>)</span><br><span class="line">    <span class="keyword">private</span> UserService userService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/findUserById"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">findUserById</span><span class="params">(<span class="keyword">int</span> id, Model model)</span></span>&#123;</span><br><span class="line">        User user = userService.findUserById(id);</span><br><span class="line"><span class="comment">//        System.out.println("chenggong");</span></span><br><span class="line">        model.addAttribute(<span class="string">"user"</span>,user);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"user"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个model会填充到request域中，然后在转发到user.jsp中，这里参数中就是定义了int id来绑定请求参数中的参数，如果当url中的请求参数名称与方法中请求参数不一样是可以通过@requestParam来绑定参数。例如</p>
+<p>（@requestParam（value=“id”）int iidd     Model model）方法内的参数这样写也可以。</p>
+<h4 id="四、POJO数据类型的绑定"><a href="#四、POJO数据类型的绑定" class="headerlink" title="四、POJO数据类型的绑定"></a>四、POJO数据类型的绑定</h4><p>当请求的简单数据参数类型比较多的话，比如一个请求中含有int、string、double等多种参数的话，那我们需要繁琐的写方法形参，这个时候我们可以用POJO（就是一个简单的对象 )绑定</p>
+<p>首先在我们的项目中创建一个POJO 名字就起User</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Integer id;       <span class="comment">//用户id</span></span><br><span class="line">    <span class="keyword">private</span> String username; <span class="comment">//用户</span></span><br><span class="line">    <span class="keyword">private</span> Integer password;<span class="comment">//用户密码</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUsername</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUsername</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.username = username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(Integer password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.password = password;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//controller类</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/registerUser"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">registerUser</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">        String username = user.getUsername();</span><br><span class="line">        Integer password = user.getPassword();</span><br><span class="line">        System.out.println(<span class="string">"username="</span>+username);</span><br><span class="line">        System.out.println(<span class="string">"password="</span>+password);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>部署之后可以请求/registerUser?id=1&amp;username=ww&amp;password=123  加在你的项目路径之后 需要注意的是你的请求参数名字和POJO 的变量名称一样。</p>
+<h4 id="五、多POJO的绑定"><a href="#五、多POJO的绑定" class="headerlink" title="五、多POJO的绑定"></a>五、多POJO的绑定</h4><p>就是在请求参数中包含了多个对象，新建一个类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Orders</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Integer ordersId; <span class="comment">// 订单编号</span></span><br><span class="line">    <span class="keyword">private</span> User user;          <span class="comment">// 用户POJO，所属用户</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getOrdersId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ordersId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOrdersId</span><span class="params">(Integer ordersId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.ordersId = ordersId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">getUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> user;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUser</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.user = user;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/findOrdersWithUser"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">findOrdersWithUser</span><span class="params">(Orders orders)</span> </span>&#123;</span><br><span class="line">        Integer orderId = orders.getOrdersId();</span><br><span class="line">        User user = orders.getUser();</span><br><span class="line">        String username = user.getUsername();</span><br><span class="line">        System.out.println(<span class="string">"orderId="</span>+orderId);</span><br><span class="line">        System.out.println(<span class="string">"username="</span>+username);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"success"</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>其实就是将原来的User也封装在order类中当作一个变量，道理是一样的。需要注意前端请求的参数名称就变为user.username=ww</p>
+<h4 id="六、自定义数据绑定"><a href="#六、自定义数据绑定" class="headerlink" title="六、自定义数据绑定"></a>六、自定义数据绑定</h4><p>就是有些类型无法直接进行数据绑定比如日期数据这个时候就需要对数据类型进行转换。</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/ad.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -185,16 +234,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/10/%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://xiangchiqingyu.github.io/2020/03/10/%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/03/08/spring-mvc%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">spring-mvc源码解析一</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -214,93 +322,33 @@
 
 
 
-
   
-    <article id="post-spring-mvc源码解析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/08/spring-mvc%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/">spring-mvc源码解析一</a>
-    </h1>
   
 
-        
-        <a href="/2020/03/08/spring-mvc%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" class="archive-article-date">
-  	<time datetime="2020-03-08T03:37:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h3 id="一、root-applicationcontext的初始化"><a href="#一、root-applicationcontext的初始化" class="headerlink" title="一、root applicationcontext的初始化"></a>一、root applicationcontext的初始化</h3><p>首先看一下整合spring-mvc后的基本配置web.xml文件</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">spring容器的配置文件，在初始化root applicationcontext的过程中将被contextLoaderlistener调用</span><br><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:applicationContext.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line"></span><br><span class="line">配置监听器即为上下文载入器，常用的就是这个contextLoaderListener监听器</span><br><span class="line">  <span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span></span><br><span class="line">          org.springframework.web.context.ContextLoaderListener</span><br><span class="line">      <span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">配置servlet类，实际上是实现了servlet接口的Dispacherservler类，这个类可以说是springmvc的核心类</span><br><span class="line">      <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springmvc<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">      初始化springmvc的配置文件路径</span><br><span class="line">      <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:springmvc-config.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">      首先启动</span><br><span class="line">      <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">拦截所有请求</span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springmvc<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>同时要注意写这些标签的顺序有要求，按照我这个顺序就可以。</p>
-<hr>
-<p>​    然后我们在idea中找到org.springframework:spring-web.jar中的contextLoaderListener类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ContextLoaderListener</span> <span class="keyword">extends</span> <span class="title">ContextLoader</span> <span class="keyword">implements</span> <span class="title">ServletContextListener</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ContextLoaderListener</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ContextLoaderListener</span><span class="params">(WebApplicationContext context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">root applicationcontext的初始化方法，传入了一个事件的参数，然后就调用initWebApplicationContext方法来初始化根上下文。那我们就可以知道初始化一个根上下文是需要两个因素分别是这个时间event和这个方法。大家再看这个上下文加载监听类实现了一个ServletContextListener接口，同时继承了一个ContextLoader类，那我们可以猜想是不是通过这两个类来分别获取这两个因素，那么同时也就意味着这个类其实作用就是类似一个介质，将产生两个因素的两个类结合在一起。</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextInitialized</span><span class="params">(ServletContextEvent event)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.initWebApplicationContext(event.getServletContext());</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">这个方法是根上下文的销毁</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextDestroyed</span><span class="params">(ServletContextEvent event)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.closeWebApplicationContext(event.getServletContext());</span><br><span class="line">        ContextCleanupListener.cleanupAttributes(event.getServletContext());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-        
-          <a class="article-more-a" href="/2020/03/08/spring-mvc%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">root applicationcontext的初始化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/08/spring-mvc%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
+  
 
   
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">  
+
+<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "https://xiangchiqingyu.github.io/2020/03/10/%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/",
+  owner: 'xiangchiqingyu',
+  repo: ' xiangchiqingyu.github.io ',
+  oauth: {
+    client_id: ' 0365e984bc4b5d536c50 ',
+    client_secret: ' fc4cf7149ebcb5b1ff5c908b2986db639a3df011 ',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+
+
   
 
 
@@ -326,8 +374,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
