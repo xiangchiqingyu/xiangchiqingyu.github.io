@@ -137,6 +137,95 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-json" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/12/json/">json</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/12/json/" class="archive-article-date">
+  	<time datetime="2020-03-12T04:53:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h4 id="一、json是什么"><a href="#一、json是什么" class="headerlink" title="一、json是什么"></a>一、json是什么</h4><p>json是一种轻量级的数据交换格式。采用完全独立于编程语言的文本格式来存储和表示数据。</p>
+<h4 id="二、为什么要使用json？"><a href="#二、为什么要使用json？" class="headerlink" title="二、为什么要使用json？"></a>二、为什么要使用json？</h4><p>json现在已经是前后端交互的主流数据格式，常用的数据存储格式还有xml，相比xml，json的特点是</p>
+<h6 id="1、解析速度更快"><a href="#1、解析速度更快" class="headerlink" title="1、解析速度更快"></a>1、解析速度更快</h6><h6 id="2、占用空间小"><a href="#2、占用空间小" class="headerlink" title="2、占用空间小"></a>2、占用空间小</h6><h6 id="3、易于编写，同时也易于机器解析"><a href="#3、易于编写，同时也易于机器解析" class="headerlink" title="3、易于编写，同时也易于机器解析"></a>3、易于编写，同时也易于机器解析</h6><h4 id="三、json的数据结构demo"><a href="#三、json的数据结构demo" class="headerlink" title="三、json的数据结构demo"></a>三、json的数据结构demo</h4><p>意思就是一个json数据怎么写呢？json有两种数据结构</p>
+<h6 id="1、对象结构-name-：value"><a href="#1、对象结构-name-：value" class="headerlink" title="1、对象结构{name ：value}"></a>1、对象结构{name ：value}</h6><p>{“city”:”qingdao”,”street”:”huashanyilu”,”postcode”:266200}</p>
+<p>就是注意到标点符号就可以</p>
+<h6 id="2、数组结构-value1，value2"><a href="#2、数组结构-value1，value2" class="headerlink" title="2、数组结构[value1，value2]"></a>2、数组结构[value1，value2]</h6><p>[“liangyiyi”,1999,true]</p>
+<p>数组结构也可以存放不同类型的数据</p>
+<h6 id="3、对象数组结构合用"><a href="#3、对象数组结构合用" class="headerlink" title="3、对象数组结构合用"></a>3、对象数组结构合用</h6><h4 id="四、json数据转换"><a href="#四、json数据转换" class="headerlink" title="四、json数据转换"></a>四、json数据转换</h4><p>spring中提供了一个httpmessageConverter<T>接口进行浏览器和控制器类之间的数据格式转换，其中在jackson包中定义了一个实现了这个接口的类MappingJackson2httpmessageConverter，来进行数据格式的转换。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-annotations<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;jackson-version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;jackson-version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-databind<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;jackson-version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>版本为2.8.8</p>
+<p>同时有这样的两个注解可以方便我们的开发</p>
+<h6 id="RequestBody-这个注解用来将用来将请求url中的参数绑定到方法体的参数上"><a href="#RequestBody-这个注解用来将用来将请求url中的参数绑定到方法体的参数上" class="headerlink" title="@RequestBody  这个注解用来将用来将请求url中的参数绑定到方法体的参数上"></a>@RequestBody  这个注解用来将用来将请求url中的参数绑定到方法体的参数上</h6><h6 id="ResponseBody-这个注解用来直接返回return对象到浏览器中"><a href="#ResponseBody-这个注解用来直接返回return对象到浏览器中" class="headerlink" title="@ResponseBody  这个注解用来直接返回return对象到浏览器中"></a>@ResponseBody  这个注解用来直接返回return对象到浏览器中</h6>
+        
+          <a class="article-more-a" href="/2020/03/12/json/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">json的基础知识</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/12/json/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-数据绑定" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -161,6 +250,12 @@
 <hr>
 <h4 id="二、默认的数据绑定"><a href="#二、默认的数据绑定" class="headerlink" title="二、默认的数据绑定"></a>二、默认的数据绑定</h4><p>默认的数据绑定，就是由后台中的提供的httprequestRequest、httprequestResponse、model、httpsession来进行数据绑定，比如：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/test"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hello1"</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>我需要再拓展一些处理方法中参数的东西</p>
+<p>我们再初学的过程中见到常用的参数就是model，或者modelandview，就是这个处理方法中可以有多个不同类型的参数，像model是由springmvc来创建的，当我们调用该处理方法的时候，这个Model就会被创建，并且还会有多种类型的返回结果比如常见的string、Modelandview，虽然String不能携带数据只能跳转视图，所以可以通过加入model来进行数据的传输，model对象会被传入到request域中。并且String类型的返回结果还可以进行重定向例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="string">"redirect:user"</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="string">"forward:user"</span></span><br></pre></td></tr></table></figure>
         
           <a class="article-more-a" href="/2020/03/10/%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/#more">more >></a>
         
