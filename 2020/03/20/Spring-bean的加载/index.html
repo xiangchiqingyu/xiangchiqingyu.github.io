@@ -6,13 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://xiangchiqingyu.github.io">
-  <title>Archives | 梁 一 一 的博客</title>
+  <title>Spring bean的加载 | 梁 一 一 的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="梁 一 一 的博客">
-<meta property="og:url" content="https://xiangchiqingyu.github.io/archives/index.html">
+  <meta name="description" content="一、DefaultListableBeanFactory的认识1DefaultListableBeanFactory  这个类是整个bean加载的核心部分，是Spring注册以及加载bean的默认实现，而对于他的实现类XmlBeanFactory中使用了自定义的XML读取器XmlBeanDefinitionReader。 123456789101112public class XmlBeanFa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring bean的加载">
+<meta property="og:url" content="https://xiangchiqingyu.github.io/2020/03/20/Spring-bean%E7%9A%84%E5%8A%A0%E8%BD%BD/index.html">
 <meta property="og:site_name" content="梁 一 一 的博客">
+<meta property="og:description" content="一、DefaultListableBeanFactory的认识1DefaultListableBeanFactory  这个类是整个bean加载的核心部分，是Spring注册以及加载bean的默认实现，而对于他的实现类XmlBeanFactory中使用了自定义的XML读取器XmlBeanDefinitionReader。 123456789101112public class XmlBeanFa">
+<meta property="article:published_time" content="2020-03-20T09:01:38.000Z">
+<meta property="article:modified_time" content="2020-03-25T12:12:51.518Z">
 <meta property="article:author" content="梁 一 一">
+<meta property="article:tag" content="bean的加载">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="梁 一 一 的博客" type="application/atom+xml">
@@ -135,63 +140,98 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Spring-bean的加载" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/23/%E5%89%8D%E5%90%8E%E7%AB%AF%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92/" class="archive-article-date">
-  	<time datetime="2020-05-23T04:25:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-23</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/23/%E5%89%8D%E5%90%8E%E7%AB%AF%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92/">前后端数据传递</a>
+    <h1 class="article-title" itemprop="name">
+      Spring bean的加载
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/20/Spring-bean%E7%9A%84%E5%8A%A0%E8%BD%BD/" class="archive-article-date">
+        
+        <a href="/2020/03/20/Spring-bean%E7%9A%84%E5%8A%A0%E8%BD%BD/" class="archive-article-date">
   	<time datetime="2020-03-20T09:01:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-20</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/20/Spring-bean%E7%9A%84%E5%8A%A0%E8%BD%BD/">Spring bean的加载</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h4 id="一、DefaultListableBeanFactory的认识"><a href="#一、DefaultListableBeanFactory的认识" class="headerlink" title="一、DefaultListableBeanFactory的认识"></a>一、DefaultListableBeanFactory的认识</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DefaultListableBeanFactory</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
+<p>这个类是整个bean加载的核心部分，是Spring注册以及加载bean的默认实现，而对于他的实现类XmlBeanFactory中使用了自定义的XML读取器XmlBeanDefinitionReader。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">XmlBeanFactory</span> <span class="keyword">extends</span> <span class="title">DefaultListableBeanFactory</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> XmlBeanDefinitionReader reader;</span><br><span class="line"><span class="comment">//创建一个xmlbeanfactory对象，然后</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">XmlBeanFactory</span><span class="params">(Resource resource)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(resource, (BeanFactory)<span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">XmlBeanFactory</span><span class="params">(Resource resource, BeanFactory parentBeanFactory)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(parentBeanFactory);</span><br><span class="line">        <span class="keyword">this</span>.reader = <span class="keyword">new</span> XmlBeanDefinitionReader(<span class="keyword">this</span>);</span><br><span class="line">        <span class="keyword">this</span>.reader.loadBeanDefinitions(resource); <span class="comment">//这个方法就是加载整个配置文件的切入点</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>其实在封装这个rescource是在这个方法之前，有兴趣的可以去看看，反正我是看不懂。</p>
+<p>然后追踪到代码的最后一行进入哪个方法进去看看，结果发现这个类已经被弃用了，现在的用啥我也没查，我就只好手动追踪，该类和XmlBeanFactory再一个包里，天地无极，万里追踪。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">loadBeanDefinitions</span><span class="params">(EncodedResource encodedResource)</span> <span class="keyword">throws</span> BeanDefinitionStoreException </span>&#123;</span><br><span class="line">        Assert.notNull(encodedResource, <span class="string">"EncodedResource must not be null"</span>);</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.logger.isInfoEnabled()) &#123;</span><br><span class="line">            <span class="keyword">this</span>.logger.info(<span class="string">"Loading XML bean definitions from "</span> + encodedResource.getResource());</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//通过属性来记录已经加载的资源</span></span><br><span class="line">        Set&lt;EncodedResource&gt; currentResources = (Set)<span class="keyword">this</span>.resourcesCurrentlyBeingLoaded.get(); <span class="comment">//在第一次运行中变量的值null</span></span><br><span class="line">        <span class="keyword">if</span> (currentResources == <span class="keyword">null</span>) &#123;</span><br><span class="line">            currentResources = <span class="keyword">new</span> HashSet(<span class="number">4</span>);</span><br><span class="line">            <span class="keyword">this</span>.resourcesCurrentlyBeingLoaded.set(currentResources);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!((Set)currentResources).add(encodedResource)) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> BeanDefinitionStoreException(<span class="string">"Detected cyclic loading of "</span> + encodedResource + <span class="string">" - check your import definitions!"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> var5;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">//从传入的参数中获取已经封装的resource对象的输入流对象</span></span><br><span class="line">                InputStream inputStream = encodedResource.getResource().getInputStream();</span><br><span class="line"></span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="comment">//通过SAX来读取xml文件并且生成inputSource对象</span></span><br><span class="line">                    InputSource inputSource = <span class="keyword">new</span> InputSource(inputStream);</span><br><span class="line">                    <span class="keyword">if</span> (encodedResource.getEncoding() != <span class="keyword">null</span>) &#123;</span><br><span class="line">                        inputSource.setEncoding(encodedResource.getEncoding());</span><br><span class="line">                    &#125;</span><br><span class="line"><span class="comment">//加载的逻辑核心部分</span></span><br><span class="line">                    var5 = <span class="keyword">this</span>.doLoadBeanDefinitions(inputSource, encodedResource.getResource());</span><br><span class="line">                &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                    inputStream.close();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException var15) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> BeanDefinitionStoreException(<span class="string">"IOException parsing XML document from "</span> + encodedResource.getResource(), var15);</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                ((Set)currentResources).remove(encodedResource);</span><br><span class="line">                <span class="keyword">if</span> (((Set)currentResources).isEmpty()) &#123;</span><br><span class="line">                    <span class="keyword">this</span>.resourcesCurrentlyBeingLoaded.remove();</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> var5;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>有一个点就是这个方法的传入参数是EncodedResource类型的，和我们上一个代码块的最后一行的调用不一致，是因为调用的首先再XmlBeanDefinitionReader这个类调用了别的方法，主要是对资源文件进行一个编码的过程，然后就有了第二个代码块。我觉得了解一下就可以。接下来我们看加载的核心代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">int</span> <span class="title">doLoadBeanDefinitions</span><span class="params">(InputSource inputSource, Resource resource)</span> <span class="keyword">throws</span> BeanDefinitionStoreException </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Document doc = <span class="keyword">this</span>.doLoadDocument(inputSource, resource);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.registerBeanDefinitions(doc, resource);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (BeanDefinitionStoreException var4) &#123;</span><br><span class="line">            <span class="keyword">throw</span> var4;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SAXParseException var5) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> XmlBeanDefinitionStoreException(resource.getDescription(), <span class="string">"Line "</span> + var5.getLineNumber() + <span class="string">" in XML document from "</span> + resource + <span class="string">" is invalid"</span>, var5);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SAXException var6) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> XmlBeanDefinitionStoreException(resource.getDescription(), <span class="string">"XML document from "</span> + resource + <span class="string">" is invalid"</span>, var6);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ParserConfigurationException var7) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> BeanDefinitionStoreException(resource.getDescription(), <span class="string">"Parser configuration exception parsing XML from "</span> + resource, var7);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException var8) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> BeanDefinitionStoreException(resource.getDescription(), <span class="string">"IOException parsing XML document from "</span> + resource, var8);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Throwable var9) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> BeanDefinitionStoreException(resource.getDescription(), <span class="string">"Unexpected exception parsing XML document from "</span> + resource, var9);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>主要就是加载xml文件，得到对应的document，再根据document注册bean，先看调用的doLoadDocument(inputSource, resource)方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> Document <span class="title">doLoadDocument</span><span class="params">(InputSource inputSource, Resource resource)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.documentLoader.loadDocument(inputSource, <span class="keyword">this</span>.getEntityResolver(), <span class="keyword">this</span>.errorHandler, <span class="keyword">this</span>.getValidationModeForResource(resource), <span class="keyword">this</span>.isNamespaceAware());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>继续追踪代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> EntityResolver <span class="title">getEntityResolver</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.entityResolver == <span class="keyword">null</span>) &#123;</span><br><span class="line">            ResourceLoader resourceLoader = <span class="keyword">this</span>.getResourceLoader();</span><br><span class="line">            <span class="keyword">if</span> (resourceLoader != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">this</span>.entityResolver = <span class="keyword">new</span> ResourceEntityResolver(resourceLoader);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">this</span>.entityResolver = <span class="keyword">new</span> DelegatingEntityResolver(<span class="keyword">this</span>.getBeanClassLoader());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.entityResolver;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个EntityResolver时什么呢？简单的说就是将xml文件上的声明转换为可以根据XML验证模式的不同在本地文件内查找。就是说原本验证xml模式需要联网去寻找声明，有了这个驱动之后就可以提供一个寻找DTD的办法，XSD和DTD模式寻找的方法时不一样的，这里就不再多说了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">int</span> <span class="title">getValidationModeForResource</span><span class="params">(Resource resource)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> validationModeToUse = <span class="keyword">this</span>.getValidationMode();</span><br><span class="line">        <span class="keyword">if</span> (validationModeToUse != <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> validationModeToUse;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> detectedMode = <span class="keyword">this</span>.detectValidationMode(resource);</span><br><span class="line">            <span class="keyword">return</span> detectedMode != <span class="number">1</span> ? detectedMode : <span class="number">3</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下来就是获取验证模式了，前提是大家要了解这两种模式的区别，逻辑就是如果xml文件里没有声明模式的话那么系统来检测，具体的我也不多说了，原理就是根据资源文件中有没有<u>DOCTYPE</u>来判断。</p>
+<p>接下来接续追踪代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Document <span class="title">loadDocument</span><span class="params">(InputSource inputSource, EntityResolver entityResolver, ErrorHandler errorHandler, <span class="keyword">int</span> validationMode, <span class="keyword">boolean</span> namespaceAware)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        DocumentBuilderFactory factory = <span class="keyword">this</span>.createDocumentBuilderFactory(validationMode, namespaceAware);</span><br><span class="line">        <span class="keyword">if</span> (logger.isDebugEnabled()) &#123;</span><br><span class="line">            logger.debug(<span class="string">"Using JAXP provider ["</span> + factory.getClass().getName() + <span class="string">"]"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        DocumentBuilder builder = <span class="keyword">this</span>.createDocumentBuilder(factory, entityResolver, errorHandler);</span><br><span class="line">        <span class="keyword">return</span> builder.parse(inputSource);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个类就是用来进行document加载资源文件。就是先通过创建DocumentBuilderFactory，然后再通过这个DocumentBuilderFactory创建DocumentBuilder，然后加载资源文件。至此加载资源文件并且返回document文件就结束了。接下来时注册bean信息。继续追踪代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">registerBeanDefinitions</span><span class="params">(Document doc, Resource resource)</span> <span class="keyword">throws</span> BeanDefinitionStoreException </span>&#123;</span><br><span class="line">    <span class="comment">//使用默认的类来实例化BeanDefinitionDocumentReader</span></span><br><span class="line">        BeanDefinitionDocumentReader documentReader = <span class="keyword">this</span>.createBeanDefinitionDocumentReader();</span><br><span class="line">    <span class="comment">//获取BeanDefinition的加载个数</span></span><br><span class="line">        <span class="keyword">int</span> countBefore = <span class="keyword">this</span>.getRegistry().getBeanDefinitionCount();</span><br><span class="line">    <span class="comment">//加载以及注册bean</span></span><br><span class="line">        documentReader.registerBeanDefinitions(doc, <span class="keyword">this</span>.createReaderContext(resource));</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.getRegistry().getBeanDefinitionCount() - countBefore;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">registerBeanDefinitions</span><span class="params">(Document doc, XmlReaderContext readerContext)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.readerContext = readerContext;</span><br><span class="line">        <span class="keyword">this</span>.logger.debug(<span class="string">"Loading bean definitions"</span>);</span><br><span class="line">        Element root = doc.getDocumentElement();</span><br><span class="line">        <span class="keyword">this</span>.doRegisterBeanDefinitions(root);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>继续追踪代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doRegisterBeanDefinitions</span><span class="params">(Element root)</span> </span>&#123;</span><br><span class="line">        BeanDefinitionParserDelegate parent = <span class="keyword">this</span>.delegate;</span><br><span class="line">        <span class="keyword">this</span>.delegate = <span class="keyword">this</span>.createDelegate(<span class="keyword">this</span>.getReaderContext(), root, parent);</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.delegate.isDefaultNamespace(root)) &#123;</span><br><span class="line">            String profileSpec = root.getAttribute(<span class="string">"profile"</span>);</span><br><span class="line">            <span class="keyword">if</span> (StringUtils.hasText(profileSpec)) &#123;</span><br><span class="line">                String[] specifiedProfiles = StringUtils.tokenizeToStringArray(profileSpec, <span class="string">",; "</span>);</span><br><span class="line">                <span class="keyword">if</span> (!<span class="keyword">this</span>.getReaderContext().getEnvironment().acceptsProfiles(specifiedProfiles)) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (<span class="keyword">this</span>.logger.isInfoEnabled()) &#123;</span><br><span class="line">                        <span class="keyword">this</span>.logger.info(<span class="string">"Skipped XML bean definition file due to specified profiles ["</span> + profileSpec + <span class="string">"] not matching: "</span> + <span class="keyword">this</span>.getReaderContext().getResource());</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.preProcessXml(root);</span><br><span class="line">    <span class="comment">//最核心的是这个方法</span></span><br><span class="line">        <span class="keyword">this</span>.parseBeanDefinitions(root, <span class="keyword">this</span>.delegate);</span><br><span class="line">        <span class="keyword">this</span>.postProcessXml(root);</span><br><span class="line">        <span class="keyword">this</span>.delegate = parent;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个里面还有处理profile的解析，就不解释了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">parseBeanDefinitions</span><span class="params">(Element root, BeanDefinitionParserDelegate delegate)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (delegate.isDefaultNamespace(root)) &#123;</span><br><span class="line">           NodeList nl = root.getChildNodes();</span><br><span class="line"></span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nl.getLength(); ++i) &#123;</span><br><span class="line">               Node node = nl.item(i);</span><br><span class="line">               <span class="keyword">if</span> (node <span class="keyword">instanceof</span> Element) &#123;</span><br><span class="line">                   Element ele = (Element)node;</span><br><span class="line">                   <span class="keyword">if</span> (delegate.isDefaultNamespace(ele)) &#123;</span><br><span class="line">                       <span class="keyword">this</span>.parseDefaultElement(ele, delegate);</span><br><span class="line">                   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                       delegate.parseCustomElement(ele);</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">           delegate.parseCustomElement(root);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个就是类的解析 了，里面定义了两种方式的解析，根据定义方式的不同，一个是默认的，一个是自定义的。接下来的在以后的文章再提吧。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/ad.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -203,209 +243,134 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://xiangchiqingyu.github.io/2020/03/20/Spring-bean%E7%9A%84%E5%8A%A0%E8%BD%BD/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/17/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2020-03-17T13:04:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-17</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/05/23/%E5%89%8D%E5%90%8E%E7%AB%AF%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          前后端数据传递
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/03/17/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">设计模式-单例模式</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/17/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">设计模式-单例模式</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/15/%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BA%86%E8%A7%A3AOP%E5%90%97%EF%BC%9F/" class="archive-article-date">
-  	<time datetime="2020-03-15T10:49:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/15/%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BA%86%E8%A7%A3AOP%E5%90%97%EF%BC%9F/">你真的了解AOP吗？</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">面向切面编程aop</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/12/json/" class="archive-article-date">
-  	<time datetime="2020-03-12T04:53:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/12/json/">json</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">json的基础知识</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/10/%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/" class="archive-article-date">
-  	<time datetime="2020-03-10T09:45:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/10/%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/">&#39;数据绑定&#39;</a>
-    </h1>
-  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">requestmapping注解详解</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "https://xiangchiqingyu.github.io/2020/03/20/Spring-bean%E7%9A%84%E5%8A%A0%E8%BD%BD/",
+  owner: 'xiangchiqingyu',
+  repo: ' xiangchiqingyu.github.io ',
+  oauth: {
+    client_id: ' 0365e984bc4b5d536c50 ',
+    client_secret: ' fc4cf7149ebcb5b1ff5c908b2986db639a3df011 ',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/08/spring-mvc%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" class="archive-article-date">
-  	<time datetime="2020-03-08T03:37:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/08/spring-mvc%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/">spring-mvc源码解析一</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">root applicationcontext的初始化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -431,8 +396,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
