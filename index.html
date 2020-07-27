@@ -137,6 +137,223 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-力扣-两数之和（中等）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/27/%E5%8A%9B%E6%89%A3-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/">力扣-两数之和（中等）</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/27/%E5%8A%9B%E6%89%A3-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-07-27T13:04:00.939Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="力扣-两数之和（中等）"><a href="#力扣-两数之和（中等）" class="headerlink" title="力扣-两数之和（中等）"></a>力扣-两数之和（中等）</h3><h5 id="一、题目介绍"><a href="#一、题目介绍" class="headerlink" title="一、题目介绍"></a>一、题目介绍</h5><p>给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。</p>
+<p>如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。</p>
+<p>您可以假设除了数字 0 之外，这两个数都不会以 0 开头。</p>
+<p>示例：</p>
+<p>输入：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>输出：7 -&gt; 0 -&gt; 8<br>原因：342 + 465 = 807<br>通过次数489,084提交次数1,292,554</p>
+<h5 id="二、代码展示"><a href="#二、代码展示" class="headerlink" title="二、代码展示"></a>二、代码展示</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     struct ListNode *next;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="function">struct ListNode* <span class="title">addTwoNumbers</span><span class="params">(struct ListNode* l1, struct ListNode* l2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>,cycle=<span class="number">0</span>,lend=<span class="number">0</span>,h=<span class="number">0</span>;</span><br><span class="line">    <span class="comment">// struct ListNode *head = (struct ListNode*)malloc(sizeof(struct ListNode));</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">head</span> = <span class="title">NULL</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">current</span> = <span class="title">head</span>;</span></span><br><span class="line">    <span class="keyword">while</span>(l1!= <span class="literal">NULL</span> || l2 != <span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(l1 != <span class="literal">NULL</span>)&#123;</span><br><span class="line">            i = l1-&gt;val;</span><br><span class="line">            l1 = l1-&gt;next;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            i = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(l2 != <span class="literal">NULL</span>)&#123;</span><br><span class="line">            j = l2-&gt;val;</span><br><span class="line">            l2 = l2-&gt;next;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            j = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(lend == <span class="number">0</span>)&#123;</span><br><span class="line">            cycle = i+j;</span><br><span class="line">            <span class="comment">// printf("%d",cycle);</span></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            cycle = i+j+<span class="number">1</span>;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(cycle &gt;= <span class="number">10</span>)&#123;</span><br><span class="line">            lend = <span class="number">1</span>;</span><br><span class="line">            h = cycle;</span><br><span class="line">            cycle = cycle%<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            lend = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">p</span> = (<span class="title">struct</span> <span class="title">ListNode</span>*)<span class="title">malloc</span>(<span class="title">sizeof</span>(<span class="title">struct</span> <span class="title">ListNode</span>));</span></span><br><span class="line">        p-&gt;val = cycle;</span><br><span class="line">        p-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">if</span>(h &gt;= <span class="number">10</span>&amp;&amp;l1!=<span class="literal">NULL</span>&amp;&amp;l2!=<span class="literal">NULL</span>&amp;&amp;l1-&gt;next == <span class="literal">NULL</span>&amp;&amp;l2-&gt;next == <span class="literal">NULL</span>)&#123;</span><br><span class="line">            <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">s</span> = (<span class="title">struct</span> <span class="title">ListNode</span>*)<span class="title">malloc</span>(<span class="title">sizeof</span>(<span class="title">struct</span> <span class="title">ListNode</span>));</span></span><br><span class="line">            s-&gt;val = <span class="number">1</span>;</span><br><span class="line">            s-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">            p-&gt;next = s;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="literal">NULL</span>)&#123;<span class="comment">//不带头结点单链表插入第一个数据时判断</span></span><br><span class="line">            head = p;</span><br><span class="line">            current = head;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            head-&gt;next = p;</span><br><span class="line">            head = head-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> current;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="三、题后总结"><a href="#三、题后总结" class="headerlink" title="三、题后总结"></a>三、题后总结</h5><p>1、解题思维<br>首先我认为做一个算法题最重要的就是思想，因为比如这个题来说，有很多种不同的方式或者可以说是思维，不同的思维决定了整个代码的走向，也包括代码简易程度等，所以在开始敲代码之前要确定整体的设计思路。<br>2、详细的知识点的了解<br>因为这个题用的是单链表为解题的存储结构，掌握了很多单链表的更加详细的知识，比如不带头节点的单链表在循环添加数据的时候需要在添加第一个数据的时候进行指针是否为空的判断。还有两个指针指向头节点，一个是当前的指针，一个不变一直指向头节点，返回的时候返回这个一直不变的这个头指针就可以。了解了别人写的简洁代码中的三目运算符特别简洁的写法，以后可以借鉴。并且要注意每创建一个单链表之后都要进行初始化，就是给结构体中的变量都赋值。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/27/%E5%8A%9B%E6%89%A3-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-力扣-1025除数博弈（简单）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/27/%E5%8A%9B%E6%89%A3-1025%E9%99%A4%E6%95%B0%E5%8D%9A%E5%BC%88%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/">力扣-1025除数博弈（简单）</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/27/%E5%8A%9B%E6%89%A3-1025%E9%99%A4%E6%95%B0%E5%8D%9A%E5%BC%88%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-07-27T13:04:00.911Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一、力扣-1025除数博弈（简单）"><a href="#一、力扣-1025除数博弈（简单）" class="headerlink" title="一、力扣 1025除数博弈（简单）"></a>一、力扣 1025除数博弈（简单）</h4><p>爱丽丝和鲍勃一起玩游戏，他们轮流行动。爱丽丝先手开局。</p>
+<p>最初，黑板上有一个数字 N 。在每个玩家的回合，玩家需要执行以下操作：</p>
+<p>选出任一 x，满足 0 &lt; x &lt; N 且 N % x == 0 。<br>用 N - x 替换黑板上的数字 N 。<br>如果玩家无法执行这些操作，就会输掉游戏。</p>
+<p>只有在爱丽丝在游戏中取得胜利时才返回 True，否则返回 false。假设两个玩家都以最佳状态参与游戏。</p>
+<p>示例 1：</p>
+<p>输入：2<br>输出：true<br>解释：爱丽丝选择 1，鲍勃无法进行操作。<br>示例 2：</p>
+<p>输入：3<br>输出：false<br>解释：爱丽丝选择 1，鲍勃也选择 1，然后爱丽丝无法进行操作。</p>
+<h4 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">divisorGame</span><span class="params">(<span class="keyword">int</span> N)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> N%<span class="number">2</span>==<span class="number">0</span>?<span class="literal">true</span>:<span class="literal">false</span>; <span class="comment">//注意三目运算符的应用并且可以直接用来return，也可以写成return N%2==0;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="三、题后总结"><a href="#三、题后总结" class="headerlink" title="三、题后总结"></a>三、题后总结</h4><p>这个题可以说是靠找规律的一个题目，要注意这个题干中说的双方都是最佳状态的意思时说面对N时，只要存在选出一个数一定能让对面失败，那么双方都可以找到这个数。只要a先拿到偶数先把偶数减一，则b肯定时奇数，因为奇数的因数还是奇数，所以a拿到的肯定时偶数，所以这样循环，a迟早会拿到2，这时a就赢了。如果是先拿到奇数则情况相反。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/27/%E5%8A%9B%E6%89%A3-1025%E9%99%A4%E6%95%B0%E5%8D%9A%E5%BC%88%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-力扣-21 合并有序链表（简单）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/27/%E5%8A%9B%E6%89%A3-21%20%E5%90%88%E5%B9%B6%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/">力扣-21 合并有序链表（简单）</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/27/%E5%8A%9B%E6%89%A3-21%20%E5%90%88%E5%B9%B6%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-07-27T13:04:00.881Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>力扣-21 合并有序链表（简单）</p>
+<h4 id="一、题干描述"><a href="#一、题干描述" class="headerlink" title="一、题干描述"></a>一、题干描述</h4><p>将两个升序链表合并为一个新的 <strong>升序</strong> 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 </p>
+<p><strong>示例：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4</span><br><span class="line">输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</span><br></pre></td></tr></table></figure>
+
+<h4 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h4><p>版本1</p>
+<p>自己做的代码，不过提示超时，应该是某个代码不对。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2)&#123;</span></span><br><span class="line"><span class="comment">//     struct ListNode *p = l1;</span></span><br><span class="line"><span class="comment">//     struct ListNode *s = l2;</span></span><br><span class="line"><span class="comment">//     struct ListNode *l = s;</span></span><br><span class="line"><span class="comment">//     while(p!=NULL&amp;&amp;s!=NULL)&#123;</span></span><br><span class="line"><span class="comment">//         if(p-&gt;val&gt;=s-&gt;val)&#123;</span></span><br><span class="line"><span class="comment">//             l-&gt;next = s;</span></span><br><span class="line"><span class="comment">//             l1=l;</span></span><br><span class="line"><span class="comment">//             if(s-&gt;next!=NULL)&#123;</span></span><br><span class="line"><span class="comment">//                 s = s-&gt;next;</span></span><br><span class="line"><span class="comment">//                 l = s;</span></span><br><span class="line"><span class="comment">//             &#125;else&#123;</span></span><br><span class="line"><span class="comment">//                 s-&gt;next = l1;</span></span><br><span class="line"><span class="comment">//                 l1 = s;</span></span><br><span class="line"><span class="comment">//             &#125;</span></span><br><span class="line"><span class="comment">//         &#125;else&#123;</span></span><br><span class="line"><span class="comment">//             if(p-&gt;next-&gt;val&gt;=s-&gt;val)&#123;</span></span><br><span class="line"><span class="comment">//                 l-&gt;next = p-&gt;next;</span></span><br><span class="line"><span class="comment">//                 p-&gt;next = l;</span></span><br><span class="line"><span class="comment">//                 if(s-&gt;next!=NULL)&#123;</span></span><br><span class="line"><span class="comment">//                 s = s-&gt;next;</span></span><br><span class="line"><span class="comment">//                 l = s;</span></span><br><span class="line"><span class="comment">//                 &#125;else&#123;</span></span><br><span class="line"><span class="comment">//                     s-&gt;next = l1;</span></span><br><span class="line"><span class="comment">//                     l1 = s;</span></span><br><span class="line"><span class="comment">//                 &#125;</span></span><br><span class="line"><span class="comment">//             &#125;else&#123;</span></span><br><span class="line"><span class="comment">//                 if(p-&gt;next!=NULL)&#123;</span></span><br><span class="line"><span class="comment">//                     p = p-&gt;next;</span></span><br><span class="line"><span class="comment">//                 &#125;else&#123;</span></span><br><span class="line"><span class="comment">//                     p-&gt;next = l;</span></span><br><span class="line"><span class="comment">//                 &#125;</span></span><br><span class="line">               </span><br><span class="line"><span class="comment">//             &#125;</span></span><br><span class="line"><span class="comment">//         &#125;</span></span><br><span class="line"><span class="comment">//     &#125;</span></span><br><span class="line"><span class="comment">//     return l1;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>版本2</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">struct ListNode* <span class="title">mergeTwoLists</span><span class="params">(struct ListNode* l1, struct ListNode* l2)</span></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> <span class="title">head</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">pre</span> = &amp;<span class="title">head</span>;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(l1&amp;&amp;l2)&#123;</span><br><span class="line">        <span class="keyword">if</span>(l1-&gt;val&lt;=l2-&gt;val)&#123;</span><br><span class="line">            pre-&gt;next = l1;</span><br><span class="line">            l1 = l1-&gt;next;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            pre-&gt;next = l2;</span><br><span class="line">            l2 = l2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        pre = pre-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    pre-&gt;next = (l1==<span class="literal">NULL</span>?l2:l1);</span><br><span class="line">    <span class="keyword">return</span> head.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="三、题后总结"><a href="#三、题后总结" class="headerlink" title="三、题后总结"></a>三、题后总结</h4><p>这个题让我更加了解了这种做题思路，我的版本一的代码的思路和版本二的思路就有很大的差距，再合并有序表的时候只需要有个头指针，然后两个有序链表从第一个元素之间开始比较，让指针指向小的那个数据，然后形成一个链表，当然还要考虑当一个链表的节点全都排序完之后直接将另一个节点的全部放上就可以。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/27/%E5%8A%9B%E6%89%A3-21%20%E5%90%88%E5%B9%B6%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-前后端数据传递" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -157,8 +374,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一、选用自己喜欢的一个前端模块，我喜欢的是layui，这种的简约的风格。</p>
-<p>进入到他的官网,下载好layui文件。放到web项目的web-app文件下面</p>
+        <h4 id="一、选用自己喜欢的一个前端模块，我喜欢的是layui，这种的简约的风格。"><a href="#一、选用自己喜欢的一个前端模块，我喜欢的是layui，这种的简约的风格。" class="headerlink" title="一、选用自己喜欢的一个前端模块，我喜欢的是layui，这种的简约的风格。"></a>一、选用自己喜欢的一个前端模块，我喜欢的是layui，这种的简约的风格。</h4><p>进入到他的官网,下载好layui文件。放到web项目的web-app文件下面</p>
 <p>下面是官网中示列中的数据表格的代码</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=<span class="string">"utf-8"</span>&gt;</span><br><span class="line">  &lt;title&gt;Layui&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">  &lt;meta name="renderer" content="webkit"&gt;</span></span><br><span class="line"><span class="regexp">  &lt;meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"&gt;</span></span><br><span class="line"><span class="regexp">  &lt;meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"&gt;</span></span><br><span class="line"><span class="regexp">  &lt;link rel="stylesheet" href="/</span><span class="regexp">/res.layui.com/</span>layui/dist/css/layui.css<span class="string">"  media="</span>all<span class="string">"&gt;</span></span><br><span class="line"><span class="string">  &lt;!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 --&gt;</span></span><br><span class="line"><span class="string">&lt;/head&gt;</span></span><br><span class="line"><span class="string">&lt;body&gt;</span></span><br><span class="line"><span class="string">           </span></span><br><span class="line"><span class="string">&lt;table class="</span>layui-hide<span class="string">" id="</span>test<span class="string">"&gt;&lt;/table&gt;</span></span><br><span class="line"><span class="string">              </span></span><br><span class="line"><span class="string">          </span></span><br><span class="line"><span class="string">&lt;script src="</span><span class="comment">//res.layui.com/layui/dist/layui.js" charset="utf-8"&gt;&lt;/script&gt;</span></span><br><span class="line">&lt;!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 --&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line">layui.use(<span class="string">'table'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> table = layui.table;</span><br><span class="line">  </span><br><span class="line">  table.render(&#123;</span><br><span class="line">    elem: <span class="string">'#test'</span></span><br><span class="line">    ,<span class="attr">url</span>:<span class="string">'/demo/table/user/'</span></span><br><span class="line">    ,<span class="attr">cellMinWidth</span>: <span class="number">80</span> <span class="comment">//全局定义常规单元格的最小宽度，layui 2.2.1 新增</span></span><br><span class="line">    ,<span class="attr">cols</span>: [[</span><br><span class="line">      &#123;<span class="attr">field</span>:<span class="string">'id'</span>, <span class="attr">width</span>:<span class="number">80</span>, <span class="attr">title</span>: <span class="string">'ID'</span>, <span class="attr">sort</span>: <span class="literal">true</span>&#125;</span><br><span class="line">      ,&#123;<span class="attr">field</span>:<span class="string">'username'</span>, <span class="attr">width</span>:<span class="number">80</span>, <span class="attr">title</span>: <span class="string">'用户名'</span>&#125;</span><br><span class="line">      ,&#123;<span class="attr">field</span>:<span class="string">'sex'</span>, <span class="attr">width</span>:<span class="number">80</span>, <span class="attr">title</span>: <span class="string">'性别'</span>, <span class="attr">sort</span>: <span class="literal">true</span>&#125;</span><br><span class="line">      ,&#123;<span class="attr">field</span>:<span class="string">'city'</span>, <span class="attr">width</span>:<span class="number">80</span>, <span class="attr">title</span>: <span class="string">'城市'</span>&#125;</span><br><span class="line">      ,&#123;<span class="attr">field</span>:<span class="string">'sign'</span>, <span class="attr">title</span>: <span class="string">'签名'</span>, <span class="attr">width</span>: <span class="string">'30%'</span>, <span class="attr">minWidth</span>: <span class="number">100</span>&#125; <span class="comment">//minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增</span></span><br><span class="line">      ,&#123;<span class="attr">field</span>:<span class="string">'experience'</span>, <span class="attr">title</span>: <span class="string">'积分'</span>, <span class="attr">sort</span>: <span class="literal">true</span>&#125;</span><br><span class="line">      ,&#123;<span class="attr">field</span>:<span class="string">'score'</span>, <span class="attr">title</span>: <span class="string">'评分'</span>, <span class="attr">sort</span>: <span class="literal">true</span>&#125;</span><br><span class="line">      ,&#123;<span class="attr">field</span>:<span class="string">'classify'</span>, <span class="attr">title</span>: <span class="string">'职业'</span>&#125;</span><br><span class="line">      ,&#123;<span class="attr">field</span>:<span class="string">'wealth'</span>, <span class="attr">width</span>:<span class="number">137</span>, <span class="attr">title</span>: <span class="string">'财富'</span>, <span class="attr">sort</span>: <span class="literal">true</span>&#125;</span><br><span class="line">    ]]</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br><span class="line">&lt;<span class="regexp">/html&gt;</span></span><br></pre></td></tr></table></figure>
         
