@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://xiangchiqingyu.github.io">
-  <title>梁 一 一 的博客</title>
+  <title>Archives: 2020 | 梁 一 一 的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="梁 一 一 的博客">
-<meta property="og:url" content="https://xiangchiqingyu.github.io/index.html">
+<meta property="og:url" content="https://xiangchiqingyu.github.io/archives/2020/page/2/index.html">
 <meta property="og:site_name" content="梁 一 一 的博客">
 <meta property="article:author" content="梁 一 一">
 <meta name="twitter:card" content="summary">
@@ -137,818 +137,136 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-力扣-面试题递归乘法（中等）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/29/%E5%8A%9B%E6%89%A3-%E9%9D%A2%E8%AF%95%E9%A2%98%E9%80%92%E5%BD%92%E4%B9%98%E6%B3%95%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/">力扣-面试题递归乘法（中等）</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/29/%E5%8A%9B%E6%89%A3-%E9%9D%A2%E8%AF%95%E9%A2%98%E9%80%92%E5%BD%92%E4%B9%98%E6%B3%95%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-07-29T14:25:46.181Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-29</time>
-</a>
-        
-      </header>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>力扣-面试题递归乘法（中等）</p>
-<h4 id="一、题干"><a href="#一、题干" class="headerlink" title="一、题干"></a>一、题干</h4><p>递归乘法。 写一个递归函数，不使用 * 运算符， 实现两个正整数的相乘。可以使用加号、减号、位移，但要吝啬一些。</p>
-<p>示例1:</p>
-<p> 输入：A = 1, B = 10<br> 输出：10<br>示例2:</p>
-<p> 输入：A = 3, B = 4<br> 输出：12</p>
-<h4 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h4><p>第一版：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">multiply</span><span class="params">(<span class="keyword">int</span> A, <span class="keyword">int</span> B)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> result;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (B &gt; <span class="number">1</span>)</span><br><span class="line">    result = multiply(A, B - <span class="number">1</span>) + A;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    result = A;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>第二版：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">multiply</span><span class="params">(<span class="keyword">int</span> A, <span class="keyword">int</span> B)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(A!=<span class="number">0</span>&amp;&amp;B!=<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(A&gt;=B)&#123;</span><br><span class="line">            <span class="keyword">return</span> multiply(A,B<span class="number">-1</span>)+A;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> multiply(A<span class="number">-1</span>,B)+B;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(A == <span class="number">0</span>||B == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="三、题后总结"><a href="#三、题后总结" class="headerlink" title="三、题后总结"></a>三、题后总结</h4><p>看到了一个评论才恍然大雾的，乘法的本质就是加法，其实可以有更简单的写法，但是那个写法测试不通过，因为A太大了，8、9位数左右，所以才有 了这个改善。把那个第一版的代码也展示出来了。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
+    
       
       
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/29/%E5%8A%9B%E6%89%A3-%E9%9D%A2%E8%AF%95%E9%A2%98%E9%80%92%E5%BD%92%E4%B9%98%E6%B3%95%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-力扣-面试题 跳水板（简答）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+        <div class="archives">
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/29/%E5%8A%9B%E6%89%A3-%E9%9D%A2%E8%AF%95%E9%A2%98%20%E8%B7%B3%E6%B0%B4%E6%9D%BF%EF%BC%88%E7%AE%80%E7%AD%94%EF%BC%89/">力扣-面试题 跳水板（简答）</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/29/%E5%8A%9B%E6%89%A3-%E9%9D%A2%E8%AF%95%E9%A2%98%20%E8%B7%B3%E6%B0%B4%E6%9D%BF%EF%BC%88%E7%AE%80%E7%AD%94%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-07-29T14:25:46.181Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-29</time>
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/03/12/json/" class="archive-article-date">
+  	<time datetime="2020-03-12T04:53:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-12</time>
 </a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>力扣-面试题 跳水板（简答）</p>
-<h4 id="一、题干"><a href="#一、题干" class="headerlink" title="一、题干"></a>一、题干</h4><p>你正在使用一堆木板建造跳水板。有两种类型的木板，其中长度较短的木板长度为shorter，长度较长的木板长度为longer。你必须正好使用k块木板。编写一个方法，生成跳水板所有可能的长度。</p>
-<p>返回的长度需要从小到大排列。</p>
-<p>示例 1</p>
-<p>输入：<br>shorter = 1<br>longer = 2<br>k = 3<br>输出： [3,4,5,6]<br>解释：<br>可以使用 3 次 shorter，得到结果 3；使用 2 次 shorter 和 1 次 longer，得到结果 4 。以此类推，得到最终结果。</p>
-<h4 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">divingBoard</span><span class="params">(<span class="keyword">int</span> shorter, <span class="keyword">int</span> longer, <span class="keyword">int</span> k, <span class="keyword">int</span>* returnSize)</span></span>&#123;</span><br><span class="line">    <span class="comment">// int *a[(longer-shorter)*k+1];这样报错因为数组里面的大小是不确定的,要用动态申请</span></span><br><span class="line">    <span class="keyword">if</span>(k==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> *returnSize = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> *a = (<span class="keyword">int</span>*)<span class="built_in">malloc</span>((k+<span class="number">1</span>)*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    <span class="keyword">if</span>(shorter == longer)&#123;</span><br><span class="line">            a[<span class="number">0</span>] = shorter*k;</span><br><span class="line">            *returnSize = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">if</span>(k==<span class="number">1</span>)&#123;</span><br><span class="line">            a[<span class="number">0</span>] = shorter;</span><br><span class="line">            a[<span class="number">1</span>] = longer;</span><br><span class="line">            *returnSize = <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">    *returnSize = k+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;=k;i++)&#123;</span><br><span class="line">        a[i]=(k-i)*shorter+i*longer;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="三、题后总结"><a href="#三、题后总结" class="headerlink" title="三、题后总结"></a>三、题后总结</h4><p>一开始做这道题的时候思路总是放在递归上，所以浪费了很多时间，同时也忘记了前提条件的判断，再写代码过程中连数组的大小都想错了，很不应该，这道题应该是到目前为止我做过的最容易的了，结果就做成这个熊样。还有一个点需要注意就是数组的动态申请，已经在代码的注释中解释了。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/29/%E5%8A%9B%E6%89%A3-%E9%9D%A2%E8%AF%95%E9%A2%98%20%E8%B7%B3%E6%B0%B4%E6%9D%BF%EF%BC%88%E7%AE%80%E7%AD%94%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-力扣-70爬楼梯（简单）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/29/%E5%8A%9B%E6%89%A3-70%E7%88%AC%E6%A5%BC%E6%A2%AF%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/">力扣-70爬楼梯（简单）</a>
+      <a class="archive-article-title" href="/2020/03/12/json/">json</a>
     </h1>
   
 
-        
-        <a href="/2020/07/29/%E5%8A%9B%E6%89%A3-70%E7%88%AC%E6%A5%BC%E6%A2%AF%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-07-29T14:25:46.166Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>力扣-70爬楼梯（简单）</p>
-<h4 id="一、题干"><a href="#一、题干" class="headerlink" title="一、题干"></a>一、题干</h4><p>假设你正在爬楼梯。需要 n 阶你才能到达楼顶。</p>
-<p>每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？</p>
-<p>注意：给定 n 是一个正整数。</p>
-<p>示例 1：</p>
-<p>输入： 2<br>输出： 2<br>解释： 有两种方法可以爬到楼顶。</p>
-<ol>
-<li>1 阶 + 1 阶</li>
-<li>2 阶<br>示例 2：</li>
-</ol>
-<p>输入： 3<br>输出： 3<br>解释： 有三种方法可以爬到楼顶。</p>
-<ol>
-<li>1 阶 + 1 阶 + 1 阶</li>
-<li>1 阶 + 2 阶</li>
-<li>2 阶 + 1 阶</li>
-</ol>
-<h4 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">2</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> climbStairs(n<span class="number">-1</span>)+climbStairs(n<span class="number">-2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="三、题后总结"><a href="#三、题后总结" class="headerlink" title="三、题后总结"></a>三、题后总结</h4><p>这个题用的是递归思想——核心就是把上一个只需要跳一阶的和两阶的方法数加在一起就代表跳n阶所需要的方法数。不过这个题再力扣的c编译器中显示超时了，不过这个思想是对的。这个想法可以通过先列举前几个比较小的阶数来找规律。</p>
-<p> 假设我要跳3阶楼梯，只要把最后跳1阶即（前面跳2阶楼梯的方法数）加上最后跳2阶（前面跳1阶楼梯的方法数）不就可以了吗？ </p>
-<p> 跳n阶楼梯的方法数=跳n-1阶楼梯的方法数+跳n-2阶楼梯的方法数 </p>
-<p>可以看看官方的视频解释</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/29/%E5%8A%9B%E6%89%A3-70%E7%88%AC%E6%A5%BC%E6%A2%AF%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-力扣-两数之和（中等）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/27/%E5%8A%9B%E6%89%A3-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/">力扣-两数之和（中等）</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/27/%E5%8A%9B%E6%89%A3-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-07-27T13:04:00.939Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="力扣-两数之和（中等）"><a href="#力扣-两数之和（中等）" class="headerlink" title="力扣-两数之和（中等）"></a>力扣-两数之和（中等）</h3><h5 id="一、题目介绍"><a href="#一、题目介绍" class="headerlink" title="一、题目介绍"></a>一、题目介绍</h5><p>给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。</p>
-<p>如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。</p>
-<p>您可以假设除了数字 0 之外，这两个数都不会以 0 开头。</p>
-<p>示例：</p>
-<p>输入：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)<br>输出：7 -&gt; 0 -&gt; 8<br>原因：342 + 465 = 807<br>通过次数489,084提交次数1,292,554</p>
-<h5 id="二、代码展示"><a href="#二、代码展示" class="headerlink" title="二、代码展示"></a>二、代码展示</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     struct ListNode *next;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="function">struct ListNode* <span class="title">addTwoNumbers</span><span class="params">(struct ListNode* l1, struct ListNode* l2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>,cycle=<span class="number">0</span>,lend=<span class="number">0</span>,h=<span class="number">0</span>;</span><br><span class="line">    <span class="comment">// struct ListNode *head = (struct ListNode*)malloc(sizeof(struct ListNode));</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">head</span> = <span class="title">NULL</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">current</span> = <span class="title">head</span>;</span></span><br><span class="line">    <span class="keyword">while</span>(l1!= <span class="literal">NULL</span> || l2 != <span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(l1 != <span class="literal">NULL</span>)&#123;</span><br><span class="line">            i = l1-&gt;val;</span><br><span class="line">            l1 = l1-&gt;next;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            i = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(l2 != <span class="literal">NULL</span>)&#123;</span><br><span class="line">            j = l2-&gt;val;</span><br><span class="line">            l2 = l2-&gt;next;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            j = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(lend == <span class="number">0</span>)&#123;</span><br><span class="line">            cycle = i+j;</span><br><span class="line">            <span class="comment">// printf("%d",cycle);</span></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            cycle = i+j+<span class="number">1</span>;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(cycle &gt;= <span class="number">10</span>)&#123;</span><br><span class="line">            lend = <span class="number">1</span>;</span><br><span class="line">            h = cycle;</span><br><span class="line">            cycle = cycle%<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            lend = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">p</span> = (<span class="title">struct</span> <span class="title">ListNode</span>*)<span class="title">malloc</span>(<span class="title">sizeof</span>(<span class="title">struct</span> <span class="title">ListNode</span>));</span></span><br><span class="line">        p-&gt;val = cycle;</span><br><span class="line">        p-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">if</span>(h &gt;= <span class="number">10</span>&amp;&amp;l1!=<span class="literal">NULL</span>&amp;&amp;l2!=<span class="literal">NULL</span>&amp;&amp;l1-&gt;next == <span class="literal">NULL</span>&amp;&amp;l2-&gt;next == <span class="literal">NULL</span>)&#123;</span><br><span class="line">            <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">s</span> = (<span class="title">struct</span> <span class="title">ListNode</span>*)<span class="title">malloc</span>(<span class="title">sizeof</span>(<span class="title">struct</span> <span class="title">ListNode</span>));</span></span><br><span class="line">            s-&gt;val = <span class="number">1</span>;</span><br><span class="line">            s-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">            p-&gt;next = s;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="literal">NULL</span>)&#123;<span class="comment">//不带头结点单链表插入第一个数据时判断</span></span><br><span class="line">            head = p;</span><br><span class="line">            current = head;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            head-&gt;next = p;</span><br><span class="line">            head = head-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">            </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> current;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="三、题后总结"><a href="#三、题后总结" class="headerlink" title="三、题后总结"></a>三、题后总结</h5><p>1、解题思维<br>首先我认为做一个算法题最重要的就是思想，因为比如这个题来说，有很多种不同的方式或者可以说是思维，不同的思维决定了整个代码的走向，也包括代码简易程度等，所以在开始敲代码之前要确定整体的设计思路。<br>2、详细的知识点的了解<br>因为这个题用的是单链表为解题的存储结构，掌握了很多单链表的更加详细的知识，比如不带头节点的单链表在循环添加数据的时候需要在添加第一个数据的时候进行指针是否为空的判断。还有两个指针指向头节点，一个是当前的指针，一个不变一直指向头节点，返回的时候返回这个一直不变的这个头指针就可以。了解了别人写的简洁代码中的三目运算符特别简洁的写法，以后可以借鉴。并且要注意每创建一个单链表之后都要进行初始化，就是给结构体中的变量都赋值。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/27/%E5%8A%9B%E6%89%A3-%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-力扣-1025除数博弈（简单）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/27/%E5%8A%9B%E6%89%A3-1025%E9%99%A4%E6%95%B0%E5%8D%9A%E5%BC%88%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/">力扣-1025除数博弈（简单）</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/27/%E5%8A%9B%E6%89%A3-1025%E9%99%A4%E6%95%B0%E5%8D%9A%E5%BC%88%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-07-27T13:04:00.911Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="一、力扣-1025除数博弈（简单）"><a href="#一、力扣-1025除数博弈（简单）" class="headerlink" title="一、力扣 1025除数博弈（简单）"></a>一、力扣 1025除数博弈（简单）</h4><p>爱丽丝和鲍勃一起玩游戏，他们轮流行动。爱丽丝先手开局。</p>
-<p>最初，黑板上有一个数字 N 。在每个玩家的回合，玩家需要执行以下操作：</p>
-<p>选出任一 x，满足 0 &lt; x &lt; N 且 N % x == 0 。<br>用 N - x 替换黑板上的数字 N 。<br>如果玩家无法执行这些操作，就会输掉游戏。</p>
-<p>只有在爱丽丝在游戏中取得胜利时才返回 True，否则返回 false。假设两个玩家都以最佳状态参与游戏。</p>
-<p>示例 1：</p>
-<p>输入：2<br>输出：true<br>解释：爱丽丝选择 1，鲍勃无法进行操作。<br>示例 2：</p>
-<p>输入：3<br>输出：false<br>解释：爱丽丝选择 1，鲍勃也选择 1，然后爱丽丝无法进行操作。</p>
-<h4 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">divisorGame</span><span class="params">(<span class="keyword">int</span> N)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> N%<span class="number">2</span>==<span class="number">0</span>?<span class="literal">true</span>:<span class="literal">false</span>; <span class="comment">//注意三目运算符的应用并且可以直接用来return，也可以写成return N%2==0;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="三、题后总结"><a href="#三、题后总结" class="headerlink" title="三、题后总结"></a>三、题后总结</h4><p>这个题可以说是靠找规律的一个题目，要注意这个题干中说的双方都是最佳状态的意思时说面对N时，只要存在选出一个数一定能让对面失败，那么双方都可以找到这个数。只要a先拿到偶数先把偶数减一，则b肯定时奇数，因为奇数的因数还是奇数，所以a拿到的肯定时偶数，所以这样循环，a迟早会拿到2，这时a就赢了。如果是先拿到奇数则情况相反。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/27/%E5%8A%9B%E6%89%A3-1025%E9%99%A4%E6%95%B0%E5%8D%9A%E5%BC%88%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-力扣-21 合并有序链表（简单）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/27/%E5%8A%9B%E6%89%A3-21%20%E5%90%88%E5%B9%B6%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/">力扣-21 合并有序链表（简单）</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/27/%E5%8A%9B%E6%89%A3-21%20%E5%90%88%E5%B9%B6%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-07-27T13:04:00.881Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>力扣-21 合并有序链表（简单）</p>
-<h4 id="一、题干描述"><a href="#一、题干描述" class="headerlink" title="一、题干描述"></a>一、题干描述</h4><p>将两个升序链表合并为一个新的 <strong>升序</strong> 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 </p>
-<p><strong>示例：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4</span><br><span class="line">输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</span><br></pre></td></tr></table></figure>
-
-<h4 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h4><p>版本1</p>
-<p>自己做的代码，不过提示超时，应该是某个代码不对。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2)&#123;</span></span><br><span class="line"><span class="comment">//     struct ListNode *p = l1;</span></span><br><span class="line"><span class="comment">//     struct ListNode *s = l2;</span></span><br><span class="line"><span class="comment">//     struct ListNode *l = s;</span></span><br><span class="line"><span class="comment">//     while(p!=NULL&amp;&amp;s!=NULL)&#123;</span></span><br><span class="line"><span class="comment">//         if(p-&gt;val&gt;=s-&gt;val)&#123;</span></span><br><span class="line"><span class="comment">//             l-&gt;next = s;</span></span><br><span class="line"><span class="comment">//             l1=l;</span></span><br><span class="line"><span class="comment">//             if(s-&gt;next!=NULL)&#123;</span></span><br><span class="line"><span class="comment">//                 s = s-&gt;next;</span></span><br><span class="line"><span class="comment">//                 l = s;</span></span><br><span class="line"><span class="comment">//             &#125;else&#123;</span></span><br><span class="line"><span class="comment">//                 s-&gt;next = l1;</span></span><br><span class="line"><span class="comment">//                 l1 = s;</span></span><br><span class="line"><span class="comment">//             &#125;</span></span><br><span class="line"><span class="comment">//         &#125;else&#123;</span></span><br><span class="line"><span class="comment">//             if(p-&gt;next-&gt;val&gt;=s-&gt;val)&#123;</span></span><br><span class="line"><span class="comment">//                 l-&gt;next = p-&gt;next;</span></span><br><span class="line"><span class="comment">//                 p-&gt;next = l;</span></span><br><span class="line"><span class="comment">//                 if(s-&gt;next!=NULL)&#123;</span></span><br><span class="line"><span class="comment">//                 s = s-&gt;next;</span></span><br><span class="line"><span class="comment">//                 l = s;</span></span><br><span class="line"><span class="comment">//                 &#125;else&#123;</span></span><br><span class="line"><span class="comment">//                     s-&gt;next = l1;</span></span><br><span class="line"><span class="comment">//                     l1 = s;</span></span><br><span class="line"><span class="comment">//                 &#125;</span></span><br><span class="line"><span class="comment">//             &#125;else&#123;</span></span><br><span class="line"><span class="comment">//                 if(p-&gt;next!=NULL)&#123;</span></span><br><span class="line"><span class="comment">//                     p = p-&gt;next;</span></span><br><span class="line"><span class="comment">//                 &#125;else&#123;</span></span><br><span class="line"><span class="comment">//                     p-&gt;next = l;</span></span><br><span class="line"><span class="comment">//                 &#125;</span></span><br><span class="line">               </span><br><span class="line"><span class="comment">//             &#125;</span></span><br><span class="line"><span class="comment">//         &#125;</span></span><br><span class="line"><span class="comment">//     &#125;</span></span><br><span class="line"><span class="comment">//     return l1;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>版本2</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">struct ListNode* <span class="title">mergeTwoLists</span><span class="params">(struct ListNode* l1, struct ListNode* l2)</span></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> <span class="title">head</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">pre</span> = &amp;<span class="title">head</span>;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(l1&amp;&amp;l2)&#123;</span><br><span class="line">        <span class="keyword">if</span>(l1-&gt;val&lt;=l2-&gt;val)&#123;</span><br><span class="line">            pre-&gt;next = l1;</span><br><span class="line">            l1 = l1-&gt;next;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            pre-&gt;next = l2;</span><br><span class="line">            l2 = l2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        pre = pre-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    pre-&gt;next = (l1==<span class="literal">NULL</span>?l2:l1);</span><br><span class="line">    <span class="keyword">return</span> head.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="三、题后总结"><a href="#三、题后总结" class="headerlink" title="三、题后总结"></a>三、题后总结</h4><p>这个题让我更加了解了这种做题思路，我的版本一的代码的思路和版本二的思路就有很大的差距，再合并有序表的时候只需要有个头指针，然后两个有序链表从第一个元素之间开始比较，让指针指向小的那个数据，然后形成一个链表，当然还要考虑当一个链表的节点全都排序完之后直接将另一个节点的全部放上就可以。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/27/%E5%8A%9B%E6%89%A3-21%20%E5%90%88%E5%B9%B6%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-前后端数据传递" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/23/%E5%89%8D%E5%90%8E%E7%AB%AF%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92/">前后端数据传递</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/23/%E5%89%8D%E5%90%8E%E7%AB%AF%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92/" class="archive-article-date">
-  	<time datetime="2020-05-23T04:25:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="一、选用自己喜欢的一个前端模块，我喜欢的是layui，这种的简约的风格。"><a href="#一、选用自己喜欢的一个前端模块，我喜欢的是layui，这种的简约的风格。" class="headerlink" title="一、选用自己喜欢的一个前端模块，我喜欢的是layui，这种的简约的风格。"></a>一、选用自己喜欢的一个前端模块，我喜欢的是layui，这种的简约的风格。</h4><p>进入到他的官网,下载好layui文件。放到web项目的web-app文件下面</p>
-<p>下面是官网中示列中的数据表格的代码</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=<span class="string">"utf-8"</span>&gt;</span><br><span class="line">  &lt;title&gt;Layui&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">  &lt;meta name="renderer" content="webkit"&gt;</span></span><br><span class="line"><span class="regexp">  &lt;meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"&gt;</span></span><br><span class="line"><span class="regexp">  &lt;meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"&gt;</span></span><br><span class="line"><span class="regexp">  &lt;link rel="stylesheet" href="/</span><span class="regexp">/res.layui.com/</span>layui/dist/css/layui.css<span class="string">"  media="</span>all<span class="string">"&gt;</span></span><br><span class="line"><span class="string">  &lt;!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 --&gt;</span></span><br><span class="line"><span class="string">&lt;/head&gt;</span></span><br><span class="line"><span class="string">&lt;body&gt;</span></span><br><span class="line"><span class="string">           </span></span><br><span class="line"><span class="string">&lt;table class="</span>layui-hide<span class="string">" id="</span>test<span class="string">"&gt;&lt;/table&gt;</span></span><br><span class="line"><span class="string">              </span></span><br><span class="line"><span class="string">          </span></span><br><span class="line"><span class="string">&lt;script src="</span><span class="comment">//res.layui.com/layui/dist/layui.js" charset="utf-8"&gt;&lt;/script&gt;</span></span><br><span class="line">&lt;!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 --&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line">layui.use(<span class="string">'table'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> table = layui.table;</span><br><span class="line">  </span><br><span class="line">  table.render(&#123;</span><br><span class="line">    elem: <span class="string">'#test'</span></span><br><span class="line">    ,<span class="attr">url</span>:<span class="string">'/demo/table/user/'</span></span><br><span class="line">    ,<span class="attr">cellMinWidth</span>: <span class="number">80</span> <span class="comment">//全局定义常规单元格的最小宽度，layui 2.2.1 新增</span></span><br><span class="line">    ,<span class="attr">cols</span>: [[</span><br><span class="line">      &#123;<span class="attr">field</span>:<span class="string">'id'</span>, <span class="attr">width</span>:<span class="number">80</span>, <span class="attr">title</span>: <span class="string">'ID'</span>, <span class="attr">sort</span>: <span class="literal">true</span>&#125;</span><br><span class="line">      ,&#123;<span class="attr">field</span>:<span class="string">'username'</span>, <span class="attr">width</span>:<span class="number">80</span>, <span class="attr">title</span>: <span class="string">'用户名'</span>&#125;</span><br><span class="line">      ,&#123;<span class="attr">field</span>:<span class="string">'sex'</span>, <span class="attr">width</span>:<span class="number">80</span>, <span class="attr">title</span>: <span class="string">'性别'</span>, <span class="attr">sort</span>: <span class="literal">true</span>&#125;</span><br><span class="line">      ,&#123;<span class="attr">field</span>:<span class="string">'city'</span>, <span class="attr">width</span>:<span class="number">80</span>, <span class="attr">title</span>: <span class="string">'城市'</span>&#125;</span><br><span class="line">      ,&#123;<span class="attr">field</span>:<span class="string">'sign'</span>, <span class="attr">title</span>: <span class="string">'签名'</span>, <span class="attr">width</span>: <span class="string">'30%'</span>, <span class="attr">minWidth</span>: <span class="number">100</span>&#125; <span class="comment">//minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增</span></span><br><span class="line">      ,&#123;<span class="attr">field</span>:<span class="string">'experience'</span>, <span class="attr">title</span>: <span class="string">'积分'</span>, <span class="attr">sort</span>: <span class="literal">true</span>&#125;</span><br><span class="line">      ,&#123;<span class="attr">field</span>:<span class="string">'score'</span>, <span class="attr">title</span>: <span class="string">'评分'</span>, <span class="attr">sort</span>: <span class="literal">true</span>&#125;</span><br><span class="line">      ,&#123;<span class="attr">field</span>:<span class="string">'classify'</span>, <span class="attr">title</span>: <span class="string">'职业'</span>&#125;</span><br><span class="line">      ,&#123;<span class="attr">field</span>:<span class="string">'wealth'</span>, <span class="attr">width</span>:<span class="number">137</span>, <span class="attr">title</span>: <span class="string">'财富'</span>, <span class="attr">sort</span>: <span class="literal">true</span>&#125;</span><br><span class="line">    ]]</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br><span class="line">&lt;<span class="regexp">/html&gt;</span></span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2020/05/23/%E5%89%8D%E5%90%8E%E7%AB%AF%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/23/%E5%89%8D%E5%90%8E%E7%AB%AF%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring-bean的加载" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/20/Spring-bean%E7%9A%84%E5%8A%A0%E8%BD%BD/">Spring bean的加载</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/20/Spring-bean%E7%9A%84%E5%8A%A0%E8%BD%BD/" class="archive-article-date">
-  	<time datetime="2020-03-20T09:01:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h4 id="一、DefaultListableBeanFactory的认识"><a href="#一、DefaultListableBeanFactory的认识" class="headerlink" title="一、DefaultListableBeanFactory的认识"></a>一、DefaultListableBeanFactory的认识</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DefaultListableBeanFactory</span><br></pre></td></tr></table></figure>
-
-<p>这个类是整个bean加载的核心部分，是Spring注册以及加载bean的默认实现，而对于他的实现类XmlBeanFactory中使用了自定义的XML读取器XmlBeanDefinitionReader。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">XmlBeanFactory</span> <span class="keyword">extends</span> <span class="title">DefaultListableBeanFactory</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> XmlBeanDefinitionReader reader;</span><br><span class="line"><span class="comment">//创建一个xmlbeanfactory对象，然后</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">XmlBeanFactory</span><span class="params">(Resource resource)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(resource, (BeanFactory)<span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">XmlBeanFactory</span><span class="params">(Resource resource, BeanFactory parentBeanFactory)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(parentBeanFactory);</span><br><span class="line">        <span class="keyword">this</span>.reader = <span class="keyword">new</span> XmlBeanDefinitionReader(<span class="keyword">this</span>);</span><br><span class="line">        <span class="keyword">this</span>.reader.loadBeanDefinitions(resource); <span class="comment">//这个方法就是加载整个配置文件的切入点</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>其实在封装这个rescource是在这个方法之前，有兴趣的可以去看看，反正我是看不懂。</p>
-<p>然后追踪到代码的最后一行进入哪个方法进去看看，结果发现这个类已经被弃用了，现在的用啥我也没查，我就只好手动追踪，该类和XmlBeanFactory再一个包里，天地无极，万里追踪。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">loadBeanDefinitions</span><span class="params">(EncodedResource encodedResource)</span> <span class="keyword">throws</span> BeanDefinitionStoreException </span>&#123;</span><br><span class="line">        Assert.notNull(encodedResource, <span class="string">"EncodedResource must not be null"</span>);</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.logger.isInfoEnabled()) &#123;</span><br><span class="line">            <span class="keyword">this</span>.logger.info(<span class="string">"Loading XML bean definitions from "</span> + encodedResource.getResource());</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//通过属性来记录已经加载的资源</span></span><br><span class="line">        Set&lt;EncodedResource&gt; currentResources = (Set)<span class="keyword">this</span>.resourcesCurrentlyBeingLoaded.get(); <span class="comment">//在第一次运行中变量的值null</span></span><br><span class="line">        <span class="keyword">if</span> (currentResources == <span class="keyword">null</span>) &#123;</span><br><span class="line">            currentResources = <span class="keyword">new</span> HashSet(<span class="number">4</span>);</span><br><span class="line">            <span class="keyword">this</span>.resourcesCurrentlyBeingLoaded.set(currentResources);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!((Set)currentResources).add(encodedResource)) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> BeanDefinitionStoreException(<span class="string">"Detected cyclic loading of "</span> + encodedResource + <span class="string">" - check your import definitions!"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> var5;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">//从传入的参数中获取已经封装的resource对象的输入流对象</span></span><br><span class="line">                InputStream inputStream = encodedResource.getResource().getInputStream();</span><br><span class="line"></span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="comment">//通过SAX来读取xml文件并且生成inputSource对象</span></span><br><span class="line">                    InputSource inputSource = <span class="keyword">new</span> InputSource(inputStream);</span><br><span class="line">                    <span class="keyword">if</span> (encodedResource.getEncoding() != <span class="keyword">null</span>) &#123;</span><br><span class="line">                        inputSource.setEncoding(encodedResource.getEncoding());</span><br><span class="line">                    &#125;</span><br><span class="line"><span class="comment">//加载的逻辑核心部分</span></span><br><span class="line">                    var5 = <span class="keyword">this</span>.doLoadBeanDefinitions(inputSource, encodedResource.getResource());</span><br><span class="line">                &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                    inputStream.close();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException var15) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> BeanDefinitionStoreException(<span class="string">"IOException parsing XML document from "</span> + encodedResource.getResource(), var15);</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                ((Set)currentResources).remove(encodedResource);</span><br><span class="line">                <span class="keyword">if</span> (((Set)currentResources).isEmpty()) &#123;</span><br><span class="line">                    <span class="keyword">this</span>.resourcesCurrentlyBeingLoaded.remove();</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> var5;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>有一个点就是这个方法的传入参数是EncodedResource类型的，和我们上一个代码块的最后一行的调用不一致，是因为调用的首先再XmlBeanDefinitionReader这个类调用了别的方法，主要是对资源文件进行一个编码的过程，然后就有了第二个代码块。我觉得了解一下就可以。接下来我们看加载的核心代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">int</span> <span class="title">doLoadBeanDefinitions</span><span class="params">(InputSource inputSource, Resource resource)</span> <span class="keyword">throws</span> BeanDefinitionStoreException </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Document doc = <span class="keyword">this</span>.doLoadDocument(inputSource, resource);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.registerBeanDefinitions(doc, resource);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (BeanDefinitionStoreException var4) &#123;</span><br><span class="line">            <span class="keyword">throw</span> var4;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SAXParseException var5) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> XmlBeanDefinitionStoreException(resource.getDescription(), <span class="string">"Line "</span> + var5.getLineNumber() + <span class="string">" in XML document from "</span> + resource + <span class="string">" is invalid"</span>, var5);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SAXException var6) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> XmlBeanDefinitionStoreException(resource.getDescription(), <span class="string">"XML document from "</span> + resource + <span class="string">" is invalid"</span>, var6);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ParserConfigurationException var7) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> BeanDefinitionStoreException(resource.getDescription(), <span class="string">"Parser configuration exception parsing XML from "</span> + resource, var7);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException var8) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> BeanDefinitionStoreException(resource.getDescription(), <span class="string">"IOException parsing XML document from "</span> + resource, var8);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Throwable var9) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> BeanDefinitionStoreException(resource.getDescription(), <span class="string">"Unexpected exception parsing XML document from "</span> + resource, var9);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>主要就是加载xml文件，得到对应的document，再根据document注册bean，先看调用的doLoadDocument(inputSource, resource)方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> Document <span class="title">doLoadDocument</span><span class="params">(InputSource inputSource, Resource resource)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.documentLoader.loadDocument(inputSource, <span class="keyword">this</span>.getEntityResolver(), <span class="keyword">this</span>.errorHandler, <span class="keyword">this</span>.getValidationModeForResource(resource), <span class="keyword">this</span>.isNamespaceAware());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>继续追踪代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> EntityResolver <span class="title">getEntityResolver</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.entityResolver == <span class="keyword">null</span>) &#123;</span><br><span class="line">            ResourceLoader resourceLoader = <span class="keyword">this</span>.getResourceLoader();</span><br><span class="line">            <span class="keyword">if</span> (resourceLoader != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">this</span>.entityResolver = <span class="keyword">new</span> ResourceEntityResolver(resourceLoader);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">this</span>.entityResolver = <span class="keyword">new</span> DelegatingEntityResolver(<span class="keyword">this</span>.getBeanClassLoader());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.entityResolver;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个EntityResolver时什么呢？简单的说就是将xml文件上的声明转换为可以根据XML验证模式的不同在本地文件内查找。就是说原本验证xml模式需要联网去寻找声明，有了这个驱动之后就可以提供一个寻找DTD的办法，XSD和DTD模式寻找的方法时不一样的，这里就不再多说了。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">int</span> <span class="title">getValidationModeForResource</span><span class="params">(Resource resource)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> validationModeToUse = <span class="keyword">this</span>.getValidationMode();</span><br><span class="line">        <span class="keyword">if</span> (validationModeToUse != <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> validationModeToUse;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> detectedMode = <span class="keyword">this</span>.detectValidationMode(resource);</span><br><span class="line">            <span class="keyword">return</span> detectedMode != <span class="number">1</span> ? detectedMode : <span class="number">3</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>接下来就是获取验证模式了，前提是大家要了解这两种模式的区别，逻辑就是如果xml文件里没有声明模式的话那么系统来检测，具体的我也不多说了，原理就是根据资源文件中有没有<u>DOCTYPE</u>来判断。</p>
-<p>接下来接续追踪代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Document <span class="title">loadDocument</span><span class="params">(InputSource inputSource, EntityResolver entityResolver, ErrorHandler errorHandler, <span class="keyword">int</span> validationMode, <span class="keyword">boolean</span> namespaceAware)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        DocumentBuilderFactory factory = <span class="keyword">this</span>.createDocumentBuilderFactory(validationMode, namespaceAware);</span><br><span class="line">        <span class="keyword">if</span> (logger.isDebugEnabled()) &#123;</span><br><span class="line">            logger.debug(<span class="string">"Using JAXP provider ["</span> + factory.getClass().getName() + <span class="string">"]"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        DocumentBuilder builder = <span class="keyword">this</span>.createDocumentBuilder(factory, entityResolver, errorHandler);</span><br><span class="line">        <span class="keyword">return</span> builder.parse(inputSource);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个类就是用来进行document加载资源文件。就是先通过创建DocumentBuilderFactory，然后再通过这个DocumentBuilderFactory创建DocumentBuilder，然后加载资源文件。至此加载资源文件并且返回document文件就结束了。接下来时注册bean信息。继续追踪代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">registerBeanDefinitions</span><span class="params">(Document doc, Resource resource)</span> <span class="keyword">throws</span> BeanDefinitionStoreException </span>&#123;</span><br><span class="line">    <span class="comment">//使用默认的类来实例化BeanDefinitionDocumentReader</span></span><br><span class="line">        BeanDefinitionDocumentReader documentReader = <span class="keyword">this</span>.createBeanDefinitionDocumentReader();</span><br><span class="line">    <span class="comment">//获取BeanDefinition的加载个数</span></span><br><span class="line">        <span class="keyword">int</span> countBefore = <span class="keyword">this</span>.getRegistry().getBeanDefinitionCount();</span><br><span class="line">    <span class="comment">//加载以及注册bean</span></span><br><span class="line">        documentReader.registerBeanDefinitions(doc, <span class="keyword">this</span>.createReaderContext(resource));</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.getRegistry().getBeanDefinitionCount() - countBefore;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">registerBeanDefinitions</span><span class="params">(Document doc, XmlReaderContext readerContext)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.readerContext = readerContext;</span><br><span class="line">        <span class="keyword">this</span>.logger.debug(<span class="string">"Loading bean definitions"</span>);</span><br><span class="line">        Element root = doc.getDocumentElement();</span><br><span class="line">        <span class="keyword">this</span>.doRegisterBeanDefinitions(root);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>继续追踪代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doRegisterBeanDefinitions</span><span class="params">(Element root)</span> </span>&#123;</span><br><span class="line">        BeanDefinitionParserDelegate parent = <span class="keyword">this</span>.delegate;</span><br><span class="line">        <span class="keyword">this</span>.delegate = <span class="keyword">this</span>.createDelegate(<span class="keyword">this</span>.getReaderContext(), root, parent);</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.delegate.isDefaultNamespace(root)) &#123;</span><br><span class="line">            String profileSpec = root.getAttribute(<span class="string">"profile"</span>);</span><br><span class="line">            <span class="keyword">if</span> (StringUtils.hasText(profileSpec)) &#123;</span><br><span class="line">                String[] specifiedProfiles = StringUtils.tokenizeToStringArray(profileSpec, <span class="string">",; "</span>);</span><br><span class="line">                <span class="keyword">if</span> (!<span class="keyword">this</span>.getReaderContext().getEnvironment().acceptsProfiles(specifiedProfiles)) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (<span class="keyword">this</span>.logger.isInfoEnabled()) &#123;</span><br><span class="line">                        <span class="keyword">this</span>.logger.info(<span class="string">"Skipped XML bean definition file due to specified profiles ["</span> + profileSpec + <span class="string">"] not matching: "</span> + <span class="keyword">this</span>.getReaderContext().getResource());</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.preProcessXml(root);</span><br><span class="line">    <span class="comment">//最核心的是这个方法</span></span><br><span class="line">        <span class="keyword">this</span>.parseBeanDefinitions(root, <span class="keyword">this</span>.delegate);</span><br><span class="line">        <span class="keyword">this</span>.postProcessXml(root);</span><br><span class="line">        <span class="keyword">this</span>.delegate = parent;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个里面还有处理profile的解析，就不解释了。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">parseBeanDefinitions</span><span class="params">(Element root, BeanDefinitionParserDelegate delegate)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (delegate.isDefaultNamespace(root)) &#123;</span><br><span class="line">           NodeList nl = root.getChildNodes();</span><br><span class="line"></span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nl.getLength(); ++i) &#123;</span><br><span class="line">               Node node = nl.item(i);</span><br><span class="line">               <span class="keyword">if</span> (node <span class="keyword">instanceof</span> Element) &#123;</span><br><span class="line">                   Element ele = (Element)node;</span><br><span class="line">                   <span class="keyword">if</span> (delegate.isDefaultNamespace(ele)) &#123;</span><br><span class="line">                       <span class="keyword">this</span>.parseDefaultElement(ele, delegate);</span><br><span class="line">                   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                       delegate.parseCustomElement(ele);</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">           delegate.parseCustomElement(root);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<p>这个就是类的解析 了，里面定义了两种方式的解析，根据定义方式的不同，一个是默认的，一个是自定义的。接下来的在以后的文章再提吧。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">bean的加载</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">json的基础知识</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/20/Spring-bean%E7%9A%84%E5%8A%A0%E8%BD%BD/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
-    <article id="post-设计模式-单例模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
     
-      <header class="article-header">
-        
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/03/10/%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/" class="archive-article-date">
+  	<time datetime="2020-03-10T09:45:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
+</a>
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/17/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">设计模式-单例模式</a>
+      <a class="archive-article-title" href="/2020/03/10/%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/">&#39;数据绑定&#39;</a>
     </h1>
   
 
-        
-        <a href="/2020/03/17/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2020-03-17T13:04:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h4 id="一、为什么要使用单例模式？"><a href="#一、为什么要使用单例模式？" class="headerlink" title="一、为什么要使用单例模式？"></a>一、为什么要使用单例模式？</h4><p>就是说使用单例模式的好处是什么？创建对象对我们java来说是家常便饭，但是随意的创建对象是对资源的一种浪费，比如说连接java的对象conection对象，在只有一种数据库的情况下只需要创建一个就足够了，创建多了反而会造成资源的浪费。但是这个事情还是靠约束和规范来实现。所以单例模式就出现了。</p>
-<p> <a href="https://www.imooc.com/article/9743" target="_blank" rel="noopener">https://www.imooc.com/article/9743</a> </p>
-<h4 id="二、懒汉模式和饥汉模式"><a href="#二、懒汉模式和饥汉模式" class="headerlink" title="二、懒汉模式和饥汉模式"></a>二、懒汉模式和饥汉模式</h4><p>首先看懒汉模式的代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> shejimoshi.danli;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Apple</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//构造方法私有化，这样外部就无法随意创建该对象</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Apple</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//饥汉模式</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Apple apple = <span class="keyword">new</span> Apple(<span class="string">"yier"</span>);</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Apple <span class="title">getApple</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> apple;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>从代码中就可以看出饥汉模式在类加载的时期就已经初始化了，</p>
-<p>再看一下测试类代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> shejimoshi.danli.Apple;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">appleTest</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">       Apple apple = Apple.getApple();</span><br><span class="line">       System.out.println(apple.getName());</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>饥汉模式的好处是早就已经创建好了对象，可以提高创建对象时候的整体速度，并且使线程安全的。缺点是会占用资源，不需要的时候也会创建资源。</p>
-<p>再看懒汉模式</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> shejimoshi.danli;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Apple</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//构造方法私有化，这样外部就无法随意创建该对象</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Apple</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    懒汉模式</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Apple apple;</span><br><span class="line">    <span class="comment">//这个方法的static一定要有，因为在外部没有创建对象的时候只能调用名字来获取这个方法</span></span><br><span class="line">    <span class="comment">//并且上面的这个变量也一定是static</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Apple <span class="title">getApple</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(apple==<span class="keyword">null</span>)&#123;</span><br><span class="line">            System.out.println(name+<span class="string">"已经被创建"</span>);</span><br><span class="line">            apple = <span class="keyword">new</span> Apple(name);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> apple;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> shejimoshi.danli.Apple;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">appleTest</span> </span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">       Apple apple = Apple.getApple(<span class="string">"yiyi"</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>懒汉模式中创建对象实在需要的时候才会创建，这样的好处是减少资源的使用，但是是线程不安全的</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">requestmapping注解详解</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/17/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
-    <article id="post-你真的了解AOP吗？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
     
-      <header class="article-header">
-        
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/03/08/spring-mvc%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" class="archive-article-date">
+  	<time datetime="2020-03-08T03:37:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
+</a>
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/15/%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BA%86%E8%A7%A3AOP%E5%90%97%EF%BC%9F/">你真的了解AOP吗？</a>
+      <a class="archive-article-title" href="/2020/03/08/spring-mvc%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/">spring-mvc源码解析一</a>
     </h1>
   
 
-        
-        <a href="/2020/03/15/%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BA%86%E8%A7%A3AOP%E5%90%97%EF%BC%9F/" class="archive-article-date">
-  	<time datetime="2020-03-15T10:49:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h4 id="一、什么是AOP？"><a href="#一、什么是AOP？" class="headerlink" title="一、什么是AOP？"></a>一、什么是AOP？</h4><p>aop的全称是Aspect-Oriented Programming，意思就是面向切面编程思想，是面向对象编程思想（oop）的种补充，目前也比较成熟。</p>
-<h4 id="二、AOP都干了什么？"><a href="#二、AOP都干了什么？" class="headerlink" title="二、AOP都干了什么？"></a>二、AOP都干了什么？</h4><p>aop采取横向抽取机制，将分散在各个方法种的重复代码提取出来，然后在程序编译或者运行时，再将这些代码应用到需要执行的地方。其实说的通俗一点就是常听到的将重复的代码提取出来形成一个公共类，或者叫util类，这个在学习mybatis的时候用到的多。</p>
-<h4 id="三、为什么要用AOP思想？"><a href="#三、为什么要用AOP思想？" class="headerlink" title="三、为什么要用AOP思想？"></a>三、为什么要用AOP思想？</h4><p>就是说这种思想有什么好处？就是可以让开发人员更加关注核心业务，并且增加代码的可维护性，，提高开发的效率。</p>
-<h4 id="四、了解AOP"><a href="#四、了解AOP" class="headerlink" title="四、了解AOP"></a>四、了解AOP</h4><h5 id="1、aop的术语"><a href="#1、aop的术语" class="headerlink" title="1、aop的术语"></a>1、aop的术语</h5><p>​            pointcut：切入点：就是需要调用切面的点，也可以说时切面与程序的交叉点</p>
-<p>​            aspect：切面：就是上面说的公共的类就是重复的代码</p>
-<p>​            joinpoint：连接点：程序执行过程种的某个阶段点</p>
-<p>​            proxy：代理：将通知应用到目标对象之后，被动态创建的对象</p>
-<p>​            weaving：织入：将切面代码插入到目标对象上，从而生成代理对象的过程</p>
-<p>​                                织入时期：编译期：切面在目标类编译时被织入,然后输出被织入后的字节码文件，这样的增强被称为静态增强。</p>
-<p>​                                                    类加载期：</p>
-<p>​                                                    运行期：Spring Aop的织入就是在运行期间实现的，就是在内存中临时创建切面类，也被称为动态增强。</p>
-<p>​            advice：通知：就是切面的的方法</p>
-<p>​                            通知类型：前置通知：before：在目标方法被调用之前调用的通知功能</p>
-<p>​                                                后置通知：after：在目标方法被调用之后调用的通知</p>
-<p>​                                                环绕通知：around：围绕连接点执行，相当于合并了前置和后置</p>
-<p>​                                                返回通知：after-returning：在目标方法成功执行了之后调用的通知</p>
-<p>​                                                异常通知：after-throwing：在目标方法抛出异常之后调用的通知</p>
-<p>​            target：目标：就是需要被切面通知的对象，也可以叫做adviced（被通知）</p>
-<h5 id="2、动态代理"><a href="#2、动态代理" class="headerlink" title="2、动态代理"></a>2、动态代理</h5><p>​            jdk动态代理：aop默认的代理方式，特点是目标类必须是接口</p>
-<p>​            Cglib代理：目标类是子类</p>
-        
-          <a class="article-more-a" href="/2020/03/15/%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BA%86%E8%A7%A3AOP%E5%90%97%EF%BC%9F/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">面向切面编程aop</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">root applicationcontext的初始化</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/15/%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BA%86%E8%A7%A3AOP%E5%90%97%EF%BC%9F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
+    </div></section>
+  
+
+    
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/archives/2020/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2020/">1</a><span class="page-number current">2</span>
     </nav>
   
 
@@ -975,9 +293,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
-		isArchive: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
