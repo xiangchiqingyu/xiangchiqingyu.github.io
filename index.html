@@ -137,6 +137,76 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-力扣-面试题 跳水板（简答）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/29/%E5%8A%9B%E6%89%A3-%E9%9D%A2%E8%AF%95%E9%A2%98%20%E8%B7%B3%E6%B0%B4%E6%9D%BF%EF%BC%88%E7%AE%80%E7%AD%94%EF%BC%89/">力扣-面试题 跳水板（简答）</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/29/%E5%8A%9B%E6%89%A3-%E9%9D%A2%E8%AF%95%E9%A2%98%20%E8%B7%B3%E6%B0%B4%E6%9D%BF%EF%BC%88%E7%AE%80%E7%AD%94%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-07-29T14:25:46.181Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>力扣-面试题 跳水板（简答）</p>
+<h4 id="一、题干"><a href="#一、题干" class="headerlink" title="一、题干"></a>一、题干</h4><p>你正在使用一堆木板建造跳水板。有两种类型的木板，其中长度较短的木板长度为shorter，长度较长的木板长度为longer。你必须正好使用k块木板。编写一个方法，生成跳水板所有可能的长度。</p>
+<p>返回的长度需要从小到大排列。</p>
+<p>示例 1</p>
+<p>输入：<br>shorter = 1<br>longer = 2<br>k = 3<br>输出： [3,4,5,6]<br>解释：<br>可以使用 3 次 shorter，得到结果 3；使用 2 次 shorter 和 1 次 longer，得到结果 4 。以此类推，得到最终结果。</p>
+<h4 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">divingBoard</span><span class="params">(<span class="keyword">int</span> shorter, <span class="keyword">int</span> longer, <span class="keyword">int</span> k, <span class="keyword">int</span>* returnSize)</span></span>&#123;</span><br><span class="line">    <span class="comment">// int *a[(longer-shorter)*k+1];这样报错因为数组里面的大小是不确定的,要用动态申请</span></span><br><span class="line">    <span class="keyword">if</span>(k==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> *returnSize = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> *a = (<span class="keyword">int</span>*)<span class="built_in">malloc</span>((k+<span class="number">1</span>)*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    <span class="keyword">if</span>(shorter == longer)&#123;</span><br><span class="line">            a[<span class="number">0</span>] = shorter*k;</span><br><span class="line">            *returnSize = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">if</span>(k==<span class="number">1</span>)&#123;</span><br><span class="line">            a[<span class="number">0</span>] = shorter;</span><br><span class="line">            a[<span class="number">1</span>] = longer;</span><br><span class="line">            *returnSize = <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">    *returnSize = k+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;=k;i++)&#123;</span><br><span class="line">        a[i]=(k-i)*shorter+i*longer;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="三、题后总结"><a href="#三、题后总结" class="headerlink" title="三、题后总结"></a>三、题后总结</h4><p>一开始做这道题的时候思路总是放在递归上，所以浪费了很多时间，同时也忘记了前提条件的判断，再写代码过程中连数组的大小都想错了，很不应该，这道题应该是到目前为止我做过的最容易的了，结果就做成这个熊样。还有一个点需要注意就是数组的动态申请，已经在代码的注释中解释了。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/29/%E5%8A%9B%E6%89%A3-%E9%9D%A2%E8%AF%95%E9%A2%98%20%E8%B7%B3%E6%B0%B4%E6%9D%BF%EF%BC%88%E7%AE%80%E7%AD%94%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-力扣-面试题递归乘法（中等）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -182,76 +252,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/07/29/%E5%8A%9B%E6%89%A3-%E9%9D%A2%E8%AF%95%E9%A2%98%E9%80%92%E5%BD%92%E4%B9%98%E6%B3%95%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-力扣-面试题 跳水板（简答）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/29/%E5%8A%9B%E6%89%A3-%E9%9D%A2%E8%AF%95%E9%A2%98%20%E8%B7%B3%E6%B0%B4%E6%9D%BF%EF%BC%88%E7%AE%80%E7%AD%94%EF%BC%89/">力扣-面试题 跳水板（简答）</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/29/%E5%8A%9B%E6%89%A3-%E9%9D%A2%E8%AF%95%E9%A2%98%20%E8%B7%B3%E6%B0%B4%E6%9D%BF%EF%BC%88%E7%AE%80%E7%AD%94%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-07-29T14:25:46.181Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>力扣-面试题 跳水板（简答）</p>
-<h4 id="一、题干"><a href="#一、题干" class="headerlink" title="一、题干"></a>一、题干</h4><p>你正在使用一堆木板建造跳水板。有两种类型的木板，其中长度较短的木板长度为shorter，长度较长的木板长度为longer。你必须正好使用k块木板。编写一个方法，生成跳水板所有可能的长度。</p>
-<p>返回的长度需要从小到大排列。</p>
-<p>示例 1</p>
-<p>输入：<br>shorter = 1<br>longer = 2<br>k = 3<br>输出： [3,4,5,6]<br>解释：<br>可以使用 3 次 shorter，得到结果 3；使用 2 次 shorter 和 1 次 longer，得到结果 4 。以此类推，得到最终结果。</p>
-<h4 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">divingBoard</span><span class="params">(<span class="keyword">int</span> shorter, <span class="keyword">int</span> longer, <span class="keyword">int</span> k, <span class="keyword">int</span>* returnSize)</span></span>&#123;</span><br><span class="line">    <span class="comment">// int *a[(longer-shorter)*k+1];这样报错因为数组里面的大小是不确定的,要用动态申请</span></span><br><span class="line">    <span class="keyword">if</span>(k==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> *returnSize = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> *a = (<span class="keyword">int</span>*)<span class="built_in">malloc</span>((k+<span class="number">1</span>)*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    <span class="keyword">if</span>(shorter == longer)&#123;</span><br><span class="line">            a[<span class="number">0</span>] = shorter*k;</span><br><span class="line">            *returnSize = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">if</span>(k==<span class="number">1</span>)&#123;</span><br><span class="line">            a[<span class="number">0</span>] = shorter;</span><br><span class="line">            a[<span class="number">1</span>] = longer;</span><br><span class="line">            *returnSize = <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">    *returnSize = k+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;=k;i++)&#123;</span><br><span class="line">        a[i]=(k-i)*shorter+i*longer;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="三、题后总结"><a href="#三、题后总结" class="headerlink" title="三、题后总结"></a>三、题后总结</h4><p>一开始做这道题的时候思路总是放在递归上，所以浪费了很多时间，同时也忘记了前提条件的判断，再写代码过程中连数组的大小都想错了，很不应该，这道题应该是到目前为止我做过的最容易的了，结果就做成这个熊样。还有一个点需要注意就是数组的动态申请，已经在代码的注释中解释了。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/29/%E5%8A%9B%E6%89%A3-%E9%9D%A2%E8%AF%95%E9%A2%98%20%E8%B7%B3%E6%B0%B4%E6%9D%BF%EF%BC%88%E7%AE%80%E7%AD%94%EF%BC%89/">展开全文 >></a>
         </p>
       
 
