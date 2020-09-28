@@ -137,43 +137,37 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-json" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-力扣-283移动零（简单）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/12/json/">json</a>
+      <a class="article-title" href="/2020/09/28/%E5%8A%9B%E6%89%A3-283%E7%A7%BB%E5%8A%A8%E9%9B%B6%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/">力扣-283移动零（简单）</a>
     </h1>
   
 
         
-        <a href="/2020/03/12/json/" class="archive-article-date">
-  	<time datetime="2020-03-12T04:53:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-12</time>
+        <a href="/2020/09/28/%E5%8A%9B%E6%89%A3-283%E7%A7%BB%E5%8A%A8%E9%9B%B6%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-09-28T13:51:30.588Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<h4 id="一、json是什么"><a href="#一、json是什么" class="headerlink" title="一、json是什么"></a>一、json是什么</h4><p>json是一种轻量级的数据交换格式。采用完全独立于编程语言的文本格式来存储和表示数据。</p>
-<h4 id="二、为什么要使用json？"><a href="#二、为什么要使用json？" class="headerlink" title="二、为什么要使用json？"></a>二、为什么要使用json？</h4><p>json现在已经是前后端交互的主流数据格式，常用的数据存储格式还有xml，相比xml，json的特点是</p>
-<h6 id="1、解析速度更快"><a href="#1、解析速度更快" class="headerlink" title="1、解析速度更快"></a>1、解析速度更快</h6><h6 id="2、占用空间小"><a href="#2、占用空间小" class="headerlink" title="2、占用空间小"></a>2、占用空间小</h6><h6 id="3、易于编写，同时也易于机器解析"><a href="#3、易于编写，同时也易于机器解析" class="headerlink" title="3、易于编写，同时也易于机器解析"></a>3、易于编写，同时也易于机器解析</h6><h4 id="三、json的数据结构demo"><a href="#三、json的数据结构demo" class="headerlink" title="三、json的数据结构demo"></a>三、json的数据结构demo</h4><p>意思就是一个json数据怎么写呢？json有两种数据结构</p>
-<h6 id="1、对象结构-name-：value"><a href="#1、对象结构-name-：value" class="headerlink" title="1、对象结构{name ：value}"></a>1、对象结构{name ：value}</h6><p>{“city”:”qingdao”,”street”:”huashanyilu”,”postcode”:266200}</p>
-<p>就是注意到标点符号就可以</p>
-<h6 id="2、数组结构-value1，value2"><a href="#2、数组结构-value1，value2" class="headerlink" title="2、数组结构[value1，value2]"></a>2、数组结构[value1，value2]</h6><p>[“liangyiyi”,1999,true]</p>
-<p>数组结构也可以存放不同类型的数据</p>
-<h6 id="3、对象数组结构合用"><a href="#3、对象数组结构合用" class="headerlink" title="3、对象数组结构合用"></a>3、对象数组结构合用</h6><h4 id="四、json数据转换"><a href="#四、json数据转换" class="headerlink" title="四、json数据转换"></a>四、json数据转换</h4><p>spring中提供了一个httpmessageConverter<T>接口进行浏览器和控制器类之间的数据格式转换，其中在jackson包中定义了一个实现了这个接口的类MappingJackson2httpmessageConverter，来进行数据格式的转换。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-annotations<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;jackson-version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;jackson-version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-databind<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;jackson-version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        <p>力扣-283移动零（简单）</p>
+<h4 id="一、题干"><a href="#一、题干" class="headerlink" title="一、题干"></a>一、题干</h4><p>给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。</p>
+<p>示例:</p>
+<p>输入: [0,1,0,3,12]<br>输出: [1,3,12,0,0]<br>说明:</p>
+<p>必须在原数组上操作，不能拷贝额外的数组。<br>尽量减少操作次数。</p>
+<h4 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">moveZeroes</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;numsSize;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums[i]!=<span class="number">0</span>)&#123;</span><br><span class="line">            nums[j] = nums[i];</span><br><span class="line">            <span class="keyword">if</span>(i!=j)&#123;</span><br><span class="line">                nums[i] = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>版本为2.8.8</p>
-<p>同时有这样的两个注解可以方便我们的开发</p>
-<h6 id="RequestBody-这个注解用来将用来将请求url中的参数绑定到方法体的参数上"><a href="#RequestBody-这个注解用来将用来将请求url中的参数绑定到方法体的参数上" class="headerlink" title="@RequestBody  这个注解用来将用来将请求url中的参数绑定到方法体的参数上"></a>@RequestBody  这个注解用来将用来将请求url中的参数绑定到方法体的参数上</h6><h6 id="ResponseBody-这个注解用来直接返回return对象到浏览器中"><a href="#ResponseBody-这个注解用来直接返回return对象到浏览器中" class="headerlink" title="@ResponseBody  这个注解用来直接返回return对象到浏览器中"></a>@ResponseBody  这个注解用来直接返回return对象到浏览器中</h6>
-        
-          <a class="article-more-a" href="/2020/03/12/json/#more">more >></a>
-        
+<h4 id="三、题后总结"><a href="#三、题后总结" class="headerlink" title="三、题后总结"></a>三、题后总结</h4><p>发现如果在注释的哪一行中写nums[j++]是错误的，我觉得是因为这个[]的限制，以后要注意</p>
+<p>还有一个点在做的上一个题中（加一），当最高位数也需要新添加一位数，说明这个新家的1后面全都是0；</p>
+<p>还记得要看收藏的这个题目加一的题目；</p>
+
       
 
       
@@ -181,22 +175,11 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">json的基础知识</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/12/json/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/09/28/%E5%8A%9B%E6%89%A3-283%E7%A7%BB%E5%8A%A8%E9%9B%B6%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/">展开全文 >></a>
         </p>
       
 
@@ -226,39 +209,37 @@
 
 
   
-    <article id="post-数据绑定" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-力扣-242（排序）有效的字母异位词（简单）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/10/%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/">&#39;数据绑定&#39;</a>
+      <a class="article-title" href="/2020/09/28/%E5%8A%9B%E6%89%A3-242%EF%BC%88%E6%8E%92%E5%BA%8F%EF%BC%89%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/">力扣-242（排序）有效的字母异位词（简单）</a>
     </h1>
   
 
         
-        <a href="/2020/03/10/%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/" class="archive-article-date">
-  	<time datetime="2020-03-10T09:45:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
+        <a href="/2020/09/28/%E5%8A%9B%E6%89%A3-242%EF%BC%88%E6%8E%92%E5%BA%8F%EF%BC%89%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-09-28T13:51:30.576Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="一、什么是数据绑定？"><a href="#一、什么是数据绑定？" class="headerlink" title="一、什么是数据绑定？"></a>一、什么是数据绑定？</h4><p>就是将服务器接收到的请求url中的数据与后台方法参数建立连接的过程。</p>
-<hr>
-<h4 id="二、默认的数据绑定"><a href="#二、默认的数据绑定" class="headerlink" title="二、默认的数据绑定"></a>二、默认的数据绑定</h4><p>默认的数据绑定，就是由后台中的提供的httprequestRequest、httprequestResponse、model、httpsession来进行数据绑定，比如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/test"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hello1"</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+        <p>力扣-242（排序）有效的字母异位词（简单）</p>
+<h4 id="一、题干"><a href="#一、题干" class="headerlink" title="一、题干"></a>一、题干</h4><p>给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。</p>
+<p>示例 1:</p>
+<p>输入: s = “anagram”, t = “nagaram”<br>输出: true<br>示例 2:</p>
+<p>输入: s = “rat”, t = “car”<br>输出: false<br>说明:<br>你可以假设字符串只包含小写字母。</p>
+<p>进阶:<br>如果输入字符串包含 unicode 字符怎么办？你能否调整你的解法来应对这种情况？</p>
+<h4 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isAnagram</span><span class="params">(<span class="keyword">char</span> * s, <span class="keyword">char</span> * t)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="built_in">strlen</span>(s);</span><br><span class="line">    <span class="keyword">int</span> b = <span class="built_in">strlen</span>(t);</span><br><span class="line">    <span class="keyword">int</span> h[<span class="number">26</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">if</span>(a!=b)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;a;i++)&#123;</span><br><span class="line">        h[s[i]-<span class="string">'a'</span>]++;</span><br><span class="line">        h[t[i]-<span class="string">'a'</span>]--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;<span class="number">26</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(h[i]!=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>我需要再拓展一些处理方法中参数的东西</p>
-<p>我们再初学的过程中见到常用的参数就是model，或者modelandview，就是这个处理方法中可以有多个不同类型的参数，像model是由springmvc来创建的，当我们调用该处理方法的时候，这个Model就会被创建，并且还会有多种类型的返回结果比如常见的string、Modelandview，虽然String不能携带数据只能跳转视图，所以可以通过加入model来进行数据的传输，model对象会被传入到request域中。并且String类型的返回结果还可以进行重定向例如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="string">"redirect:user"</span></span><br></pre></td></tr></table></figure>
+<h4 id="三、题后总结"><a href="#三、题后总结" class="headerlink" title="三、题后总结"></a>三、题后总结</h4><p>这个题之所以记笔记是因为对这个字符串的加减还不是很清楚。非常基础的可以看C语言书35页。</p>
+<p>两个字符相减的结果是整数型的，是他们代表的ASCLL的数值的差，比如’b’-‘a’=1；</p>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="string">"forward:user"</span></span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2020/03/10/%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/#more">more >></a>
-        
       
 
       
@@ -266,22 +247,11 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">requestmapping注解详解</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/10/%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/09/28/%E5%8A%9B%E6%89%A3-242%EF%BC%88%E6%8E%92%E5%BA%8F%EF%BC%89%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/">展开全文 >></a>
         </p>
       
 
@@ -311,39 +281,42 @@
 
 
   
-    <article id="post-spring-mvc源码解析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-力扣-238（数组）除自身以外数组的乘积（中等 ）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/08/spring-mvc%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/">spring-mvc源码解析一</a>
+      <a class="article-title" href="/2020/09/28/%E5%8A%9B%E6%89%A3-238%EF%BC%88%E6%95%B0%E7%BB%84%EF%BC%89%E9%99%A4%E8%87%AA%E8%BA%AB%E4%BB%A5%E5%A4%96%E6%95%B0%E7%BB%84%E7%9A%84%E4%B9%98%E7%A7%AF%EF%BC%88%E4%B8%AD%E7%AD%89%20%EF%BC%89/">力扣-238（数组）除自身以外数组的乘积（中等 ）</a>
     </h1>
   
 
         
-        <a href="/2020/03/08/spring-mvc%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" class="archive-article-date">
-  	<time datetime="2020-03-08T03:37:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
+        <a href="/2020/09/28/%E5%8A%9B%E6%89%A3-238%EF%BC%88%E6%95%B0%E7%BB%84%EF%BC%89%E9%99%A4%E8%87%AA%E8%BA%AB%E4%BB%A5%E5%A4%96%E6%95%B0%E7%BB%84%E7%9A%84%E4%B9%98%E7%A7%AF%EF%BC%88%E4%B8%AD%E7%AD%89%20%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-09-28T13:51:30.560Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<h3 id="一、root-applicationcontext的初始化"><a href="#一、root-applicationcontext的初始化" class="headerlink" title="一、root applicationcontext的初始化"></a>一、root applicationcontext的初始化</h3><p>首先看一下整合spring-mvc后的基本配置web.xml文件</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">spring容器的配置文件，在初始化root applicationcontext的过程中将被contextLoaderlistener调用</span><br><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:applicationContext.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line"></span><br><span class="line">配置监听器即为上下文载入器，常用的就是这个contextLoaderListener监听器</span><br><span class="line">  <span class="tag">&lt;<span class="name">listener</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span></span><br><span class="line">          org.springframework.web.context.ContextLoaderListener</span><br><span class="line">      <span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">配置servlet类，实际上是实现了servlet接口的Dispacherservler类，这个类可以说是springmvc的核心类</span><br><span class="line">      <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springmvc<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">      初始化springmvc的配置文件路径</span><br><span class="line">      <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:springmvc-config.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line">      首先启动</span><br><span class="line">      <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">拦截所有请求</span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>springmvc<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        <p>力扣-238（数组）除自身以外数组的乘积（中等 ）</p>
+<h4 id="一、题干"><a href="#一、题干" class="headerlink" title="一、题干"></a>一、题干</h4><p>给你一个长度为 n 的整数数组 nums，其中 n &gt; 1，返回输出数组 output ，其中 output[i] 等于 nums 中除 nums[i] 之外其余各元素的乘积。</p>
+<p>示例:</p>
+<p>输入: [1,2,3,4]<br>输出: [24,12,8,6]</p>
+<p>提示：题目数据保证数组之中任意元素的全部前缀元素和后缀（甚至是整个数组）的乘积都在 32 位整数范围内。</p>
+<p>说明: 请不要使用除法，且在 O(n) 时间复杂度内完成此题。</p>
+<p>进阶：<br>你可以在常数空间复杂度内完成这个题目吗？（ 出于对空间复杂度分析的目的，输出数组不被视为额外空间。）</p>
+<h4 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Note: The returned array must be malloced, assume caller calls free().</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">productExceptSelf</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize, <span class="keyword">int</span>* returnSize)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span>* result = (<span class="keyword">int</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>)*numsSize);</span><br><span class="line">    <span class="comment">//用数组一来存储每个元素的左边部分的乘机</span></span><br><span class="line">    <span class="keyword">int</span>* left = (<span class="keyword">int</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>)*numsSize);</span><br><span class="line">    left[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i&lt;numsSize;i++)&#123;</span><br><span class="line">        left[i] = left[i<span class="number">-1</span>]*nums[i<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//用一个数组来存储右边数组的部分的乘积</span></span><br><span class="line">    <span class="keyword">int</span>* right = (<span class="keyword">int</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>)*numsSize);</span><br><span class="line">    right[numsSize<span class="number">-1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = numsSize<span class="number">-2</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">        right[i] = right[i+<span class="number">1</span>]*nums[i+<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//合并两遍的乘积</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;numsSize;i++)&#123;</span><br><span class="line">        result[i] = right[i]*left[i];</span><br><span class="line">    &#125;</span><br><span class="line">    *returnSize = numsSize;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>同时要注意写这些标签的顺序有要求，按照我这个顺序就可以。</p>
-<hr>
-<p>​    然后我们在idea中找到org.springframework:spring-web.jar中的contextLoaderListener类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ContextLoaderListener</span> <span class="keyword">extends</span> <span class="title">ContextLoader</span> <span class="keyword">implements</span> <span class="title">ServletContextListener</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ContextLoaderListener</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ContextLoaderListener</span><span class="params">(WebApplicationContext context)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">root applicationcontext的初始化方法，传入了一个事件的参数，然后就调用initWebApplicationContext方法来初始化根上下文。那我们就可以知道初始化一个根上下文是需要两个因素分别是这个时间event和这个方法。大家再看这个上下文加载监听类实现了一个ServletContextListener接口，同时继承了一个ContextLoader类，那我们可以猜想是不是通过这两个类来分别获取这两个因素，那么同时也就意味着这个类其实作用就是类似一个介质，将产生两个因素的两个类结合在一起。</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextInitialized</span><span class="params">(ServletContextEvent event)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.initWebApplicationContext(event.getServletContext());</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">这个方法是根上下文的销毁</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">contextDestroyed</span><span class="params">(ServletContextEvent event)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.closeWebApplicationContext(event.getServletContext());</span><br><span class="line">        ContextCleanupListener.cleanupAttributes(event.getServletContext());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="三、题后总结"><a href="#三、题后总结" class="headerlink" title="三、题后总结"></a>三、题后总结</h4><p>这个题目是高级算法中的，我是看了官网的解析才做出来的。</p>
+<p>我觉得这个题最需要注意的就是</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">left[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i&lt;numsSize;i++)&#123;</span><br><span class="line">        left[i] = left[i<span class="number">-1</span>]*nums[i<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<hr>
-        
-          <a class="article-more-a" href="/2020/03/08/spring-mvc%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/#more">more >></a>
-        
+<p>这一段代码，要明白为什么要设置为1，还有循环的过程需要理解。</p>
+<p>还有一点，动态创建的数组不需要初始化为0 ，我一直以为要初始化为0.</p>
+
       
 
       
@@ -351,22 +324,516 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">root applicationcontext的初始化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/08/spring-mvc%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/09/28/%E5%8A%9B%E6%89%A3-238%EF%BC%88%E6%95%B0%E7%BB%84%EF%BC%89%E9%99%A4%E8%87%AA%E8%BA%AB%E4%BB%A5%E5%A4%96%E6%95%B0%E7%BB%84%E7%9A%84%E4%B9%98%E7%A7%AF%EF%BC%88%E4%B8%AD%E7%AD%89%20%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-力扣-54螺旋矩阵（中等）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/28/%E5%8A%9B%E6%89%A3-54%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/">力扣-54螺旋矩阵（中等）</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/28/%E5%8A%9B%E6%89%A3-54%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-09-28T13:51:30.531Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>力扣-54螺旋矩阵（中等）</p>
+<h4 id="一、题干"><a href="#一、题干" class="headerlink" title="一、题干"></a>一、题干</h4><p>给定一个包含 m x n 个元素的矩阵（m 行, n 列），请按照顺时针螺旋顺序，返回矩阵中的所有元素。</p>
+<p>示例 1:</p>
+<p>输入:<br>[<br> [ 1, 2, 3 ],<br> [ 4, 5, 6 ],<br> [ 7, 8, 9 ]<br>]<br>输出: [1,2,3,6,9,8,7,4,5]<br>示例 2:</p>
+<p>输入:<br>[<br>  [1, 2, 3, 4],<br>  [5, 6, 7, 8],<br>  [9,10,11,12]<br>]<br>输出: [1,2,3,4,8,12,11,10,9,5,6,7]</p>
+<h4 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h4><p>版本一   这个代码是错了，看错题干了，这个是蛇形的遍历。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Note: The returned array must be malloced, assume caller calls free().</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">spiralOrder</span><span class="params">(<span class="keyword">int</span>** matrix, <span class="keyword">int</span> matrixSize, <span class="keyword">int</span>* matrixColSize, <span class="keyword">int</span>* returnSize)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(matrixSize == <span class="number">0</span>||*matrixColSize == <span class="number">0</span>||matrix == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        *returnSize = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> h = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span>* result = (<span class="keyword">int</span> *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>)*((*matrixColSize)*matrixSize));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;matrixSize;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(i%<span class="number">2</span> == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j&lt;*matrixColSize;j++)&#123;</span><br><span class="line">                result[h++] = matrix[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k = *matrixColSize<span class="number">-1</span>;k&gt;=<span class="number">0</span>;k--)&#123;</span><br><span class="line">                result[h++] = matrix[i][k];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    *returnSize = matrixSize*(*matrixColSize);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>版本2</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/28/%E5%8A%9B%E6%89%A3-54%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-力扣-（分治算法）连续数列（简单）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/28/%E5%8A%9B%E6%89%A3-%EF%BC%88%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95%EF%BC%89%E8%BF%9E%E7%BB%AD%E6%95%B0%E5%88%97%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/">力扣-（分治算法）连续数列（简单）</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/28/%E5%8A%9B%E6%89%A3-%EF%BC%88%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95%EF%BC%89%E8%BF%9E%E7%BB%AD%E6%95%B0%E5%88%97%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-09-28T13:51:30.499Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>力扣-（分治算法）连续数列（简单）</p>
+<h4 id="一、题干"><a href="#一、题干" class="headerlink" title="一、题干"></a>一、题干</h4><p>给定一个整数数组，找出总和最大的连续数列，并返回总和。</p>
+<p>示例：</p>
+<p>输入： [-2,1,-3,4,-1,2,1,-5,4]<br>输出： 6<br>解释： 连续子数组 [4,-1,2,1] 的和最大，为 6。<br>进阶：</p>
+<p>如果你已经实现复杂度为 O(n) 的解法，尝试使用更为精妙的分治法求解。</p>
+<h4 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> currentMax = nums[<span class="number">0</span>],sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;numsSize;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(sum&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">            sum += nums[i];</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            sum = nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        currentMax = compare(sum,currentMax);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> currentMax;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">compare</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a&gt;=b?a:b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="三、题后总结"><a href="#三、题后总结" class="headerlink" title="三、题后总结"></a>三、题后总结</h4><p>这个题目之前做过一个一摸一样的，但是不知道有没有用记录下来，那个题目叫最大字序和，和这个代码都是一摸一样的。说实话做完这个题目之后，对这个分治算法仍然没什么感觉，感觉就是动态规划。这个题目思想就是如果sum大于零，再加上这个num【i】，如果是小于0，那么他就会减少这个num【i】，就不再是</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/28/%E5%8A%9B%E6%89%A3-%EF%BC%88%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95%EF%BC%89%E8%BF%9E%E7%BB%AD%E6%95%B0%E5%88%97%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-力扣-（动态规划）最大字序和（简单）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/28/%E5%8A%9B%E6%89%A3-%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89%E6%9C%80%E5%A4%A7%E5%AD%97%E5%BA%8F%E5%92%8C%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/">力扣-（动态规划）最大字序和（简单）</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/28/%E5%8A%9B%E6%89%A3-%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89%E6%9C%80%E5%A4%A7%E5%AD%97%E5%BA%8F%E5%92%8C%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-09-28T13:51:30.485Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>力扣-（动态规划）最大字序和（简单）</p>
+<h4 id="一、题干"><a href="#一、题干" class="headerlink" title="一、题干"></a>一、题干</h4><p>给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
+<p>示例:</p>
+<p>输入: [-2,1,-3,4,-1,2,1,-5,4]<br>输出: 6<br>解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。<br>进阶:</p>
+<p>如果你已经实现复杂度为 O(n) 的解法，尝试使用更为精妙的分治法求解。</p>
+<h4 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>,currentMax = nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;numsSize;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(sum&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            sum += nums[i];</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            sum = nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        currentMax = compare(currentMax,sum);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> currentMax;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">compare</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a&gt;=b?a:b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="三、题后总结"><a href="#三、题后总结" class="headerlink" title="三、题后总结"></a>三、题后总结</h4><p>这种动态规划的题目对我现在来说还是有难度的，即使的简单等级的。</p>
+<p>这个题目的思想就是遍历数组，如果当前的总数和是大于零的就加上遍历到的元素，如果不是大于0，再相加的话就是再减小最大值，所以如果小于0就让sum等于当前的元素，每一次循环之后都去比较当前的sum和过去的sum的最大值。</p>
+<p>到这里其实我还有一些地方是不理解的，还需要再去看看别人的解析。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/28/%E5%8A%9B%E6%89%A3-%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89%E6%9C%80%E5%A4%A7%E5%AD%97%E5%BA%8F%E5%92%8C%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-力扣-（动态规划）打家劫舍（简单）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/28/%E5%8A%9B%E6%89%A3-%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/">力扣-（动态规划）打家劫舍（简单）</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/28/%E5%8A%9B%E6%89%A3-%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-09-28T13:51:30.426Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>力扣-（动态规划）打家劫舍（简单）</p>
+<h4 id="一、题干"><a href="#一、题干" class="headerlink" title="一、题干"></a>一、题干</h4><p>你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。</p>
+<p>给定一个代表每个房屋存放金额的非负整数数组，计算你 不触动警报装置的情况下 ，一夜之内能够偷窃到的最高金额。</p>
+<p>示例 1：</p>
+<p>输入：[1,2,3,1]<br>输出：4<br>解释：偷窃 1 号房屋 (金额 = 1) ，然后偷窃 3 号房屋 (金额 = 3)。<br>     偷窃到的最高金额 = 1 + 3 = 4 。<br>示例 2：</p>
+<p>输入：[2,7,9,3,1]<br>输出：12<br>解释：偷窃 1 号房屋 (金额 = 2), 偷窃 3 号房屋 (金额 = 9)，接着偷窃 5 号房屋 (金额 = 1)。<br>     偷窃到的最高金额 = 2 + 9 + 1 = 12 。</p>
+<p>提示：</p>
+<p>0 &lt;= nums.length &lt;= 100<br>0 &lt;= nums[i] &lt;= 400</p>
+<h4 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">rob</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(numsSize&lt;=<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span>* dp = (<span class="keyword">int</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>)*numsSize);</span><br><span class="line">    <span class="keyword">if</span>(numsSize == <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(numsSize == <span class="number">2</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> compare(nums[<span class="number">0</span>],nums[<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    dp[<span class="number">0</span>] = nums[<span class="number">0</span>];</span><br><span class="line">    dp[<span class="number">1</span>] = compare(nums[<span class="number">0</span>],nums[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>;i&lt;numsSize;i++)&#123;</span><br><span class="line">        dp[i] = compare(dp[i<span class="number">-2</span>]+nums[i],dp[i<span class="number">-1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[numsSize<span class="number">-1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">compare</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a&gt;=b?a:b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="三、题后总结"><a href="#三、题后总结" class="headerlink" title="三、题后总结"></a>三、题后总结</h4><p>这个题目也是比较简单的动态规划的题目，突然觉得动态规划的题目还挺有意思的。</p>
+<p>刚才看了看动态规划的定义，简单说就是解决重叠子问题，有点像递归的的意思。</p>
+<p>这个题目的重叠子问题就是打劫到第i家的时候最大利益是</p>
+<p>dp[i] = compare(dp[i-2]+nums[i],dp[i-1]);</p>
+<p>这个代码，这个理解了就ok了，这个是该问题的核心。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/28/%E5%8A%9B%E6%89%A3-%EF%BC%88%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%EF%BC%89%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-力扣-（并查集）被围绕的岛屿（中等）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/28/%E5%8A%9B%E6%89%A3-%EF%BC%88%E5%B9%B6%E6%9F%A5%E9%9B%86%EF%BC%89%E8%A2%AB%E5%9B%B4%E7%BB%95%E7%9A%84%E5%B2%9B%E5%B1%BF%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/">力扣-（并查集）被围绕的岛屿（中等）</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/28/%E5%8A%9B%E6%89%A3-%EF%BC%88%E5%B9%B6%E6%9F%A5%E9%9B%86%EF%BC%89%E8%A2%AB%E5%9B%B4%E7%BB%95%E7%9A%84%E5%B2%9B%E5%B1%BF%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-09-28T13:51:30.318Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>力扣-（并查集）被围绕的岛屿（中等）</p>
+<h4 id="一、题干"><a href="#一、题干" class="headerlink" title="一、题干"></a>一、题干</h4><p>给定一个二维的矩阵，包含 ‘X’ 和 ‘O’（字母 O）。</p>
+<p>找到所有被 ‘X’ 围绕的区域，并将这些区域里所有的 ‘O’ 用 ‘X’ 填充。</p>
+<p>示例:</p>
+<p>X X X X<br>X O O X<br>X X O X<br>X O X X<br>运行你的函数后，矩阵变为：</p>
+<p>X X X X<br>X X X X<br>X X X X<br>X O X X<br>解释:</p>
+<p>被围绕的区间不会存在于边界上，换句话说，任何边界上的 ‘O’ 都不会被填充为 ‘X’。 任何不在边界上，或不与边界上的 ‘O’ 相连的 ‘O’ 最终都会被填充为 ‘X’。如果两个元素在水平或垂直方向相邻，则称它们是“相连”的。</p>
+<h4 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h4><h4 id="三、题后总结"><a href="#三、题后总结" class="headerlink" title="三、题后总结"></a>三、题后总结</h4><p>这道题目串联了太多的知识点，估计得话好几天时间、比如头文件、static关键字、全局变量、传参引用，结构体最关键的是并查集的算法。</p>
+<p>所以这个题目是先写的总结，在准备去研究代码。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/28/%E5%8A%9B%E6%89%A3-%EF%BC%88%E5%B9%B6%E6%9F%A5%E9%9B%86%EF%BC%89%E8%A2%AB%E5%9B%B4%E7%BB%95%E7%9A%84%E5%B2%9B%E5%B1%BF%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-力扣-面试题递归乘法（中等）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/29/%E5%8A%9B%E6%89%A3-%E9%9D%A2%E8%AF%95%E9%A2%98%E9%80%92%E5%BD%92%E4%B9%98%E6%B3%95%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/">力扣-面试题递归乘法（中等）</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/29/%E5%8A%9B%E6%89%A3-%E9%9D%A2%E8%AF%95%E9%A2%98%E9%80%92%E5%BD%92%E4%B9%98%E6%B3%95%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-07-29T14:25:46.181Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>力扣-面试题递归乘法（中等）</p>
+<h4 id="一、题干"><a href="#一、题干" class="headerlink" title="一、题干"></a>一、题干</h4><p>递归乘法。 写一个递归函数，不使用 * 运算符， 实现两个正整数的相乘。可以使用加号、减号、位移，但要吝啬一些。</p>
+<p>示例1:</p>
+<p> 输入：A = 1, B = 10<br> 输出：10<br>示例2:</p>
+<p> 输入：A = 3, B = 4<br> 输出：12</p>
+<h4 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h4><p>第一版：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">multiply</span><span class="params">(<span class="keyword">int</span> A, <span class="keyword">int</span> B)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> result;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (B &gt; <span class="number">1</span>)</span><br><span class="line">    result = multiply(A, B - <span class="number">1</span>) + A;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    result = A;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>第二版：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">multiply</span><span class="params">(<span class="keyword">int</span> A, <span class="keyword">int</span> B)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(A!=<span class="number">0</span>&amp;&amp;B!=<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(A&gt;=B)&#123;</span><br><span class="line">            <span class="keyword">return</span> multiply(A,B<span class="number">-1</span>)+A;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> multiply(A<span class="number">-1</span>,B)+B;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(A == <span class="number">0</span>||B == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="三、题后总结"><a href="#三、题后总结" class="headerlink" title="三、题后总结"></a>三、题后总结</h4><p>看到了一个评论才恍然大雾的，乘法的本质就是加法，其实可以有更简单的写法，但是那个写法测试不通过，因为A太大了，8、9位数左右，所以才有 了这个改善。把那个第一版的代码也展示出来了。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/29/%E5%8A%9B%E6%89%A3-%E9%9D%A2%E8%AF%95%E9%A2%98%E9%80%92%E5%BD%92%E4%B9%98%E6%B3%95%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-力扣-面试题 跳水板（简答）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/29/%E5%8A%9B%E6%89%A3-%E9%9D%A2%E8%AF%95%E9%A2%98%20%E8%B7%B3%E6%B0%B4%E6%9D%BF%EF%BC%88%E7%AE%80%E7%AD%94%EF%BC%89/">力扣-面试题 跳水板（简答）</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/29/%E5%8A%9B%E6%89%A3-%E9%9D%A2%E8%AF%95%E9%A2%98%20%E8%B7%B3%E6%B0%B4%E6%9D%BF%EF%BC%88%E7%AE%80%E7%AD%94%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2020-07-29T14:25:46.181Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>力扣-面试题 跳水板（简答）</p>
+<h4 id="一、题干"><a href="#一、题干" class="headerlink" title="一、题干"></a>一、题干</h4><p>你正在使用一堆木板建造跳水板。有两种类型的木板，其中长度较短的木板长度为shorter，长度较长的木板长度为longer。你必须正好使用k块木板。编写一个方法，生成跳水板所有可能的长度。</p>
+<p>返回的长度需要从小到大排列。</p>
+<p>示例 1</p>
+<p>输入：<br>shorter = 1<br>longer = 2<br>k = 3<br>输出： [3,4,5,6]<br>解释：<br>可以使用 3 次 shorter，得到结果 3；使用 2 次 shorter 和 1 次 longer，得到结果 4 。以此类推，得到最终结果。</p>
+<h4 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">divingBoard</span><span class="params">(<span class="keyword">int</span> shorter, <span class="keyword">int</span> longer, <span class="keyword">int</span> k, <span class="keyword">int</span>* returnSize)</span></span>&#123;</span><br><span class="line">    <span class="comment">// int *a[(longer-shorter)*k+1];这样报错因为数组里面的大小是不确定的,要用动态申请</span></span><br><span class="line">    <span class="keyword">if</span>(k==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> *returnSize = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> *a = (<span class="keyword">int</span>*)<span class="built_in">malloc</span>((k+<span class="number">1</span>)*<span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">    <span class="keyword">if</span>(shorter == longer)&#123;</span><br><span class="line">            a[<span class="number">0</span>] = shorter*k;</span><br><span class="line">            *returnSize = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">if</span>(k==<span class="number">1</span>)&#123;</span><br><span class="line">            a[<span class="number">0</span>] = shorter;</span><br><span class="line">            a[<span class="number">1</span>] = longer;</span><br><span class="line">            *returnSize = <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">    *returnSize = k+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;=k;i++)&#123;</span><br><span class="line">        a[i]=(k-i)*shorter+i*longer;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="三、题后总结"><a href="#三、题后总结" class="headerlink" title="三、题后总结"></a>三、题后总结</h4><p>一开始做这道题的时候思路总是放在递归上，所以浪费了很多时间，同时也忘记了前提条件的判断，再写代码过程中连数组的大小都想错了，很不应该，这道题应该是到目前为止我做过的最容易的了，结果就做成这个熊样。还有一个点需要注意就是数组的动态申请，已经在代码的注释中解释了。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/29/%E5%8A%9B%E6%89%A3-%E9%9D%A2%E8%AF%95%E9%A2%98%20%E8%B7%B3%E6%B0%B4%E6%9D%BF%EF%BC%88%E7%AE%80%E7%AD%94%EF%BC%89/">展开全文 >></a>
         </p>
       
 
@@ -398,7 +865,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
     </nav>
   
 

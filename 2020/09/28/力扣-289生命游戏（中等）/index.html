@@ -6,12 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://xiangchiqingyu.github.io">
-  <title>梁 一 一 的博客</title>
+  <title>力扣-289生命游戏（中等） | 梁 一 一 的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="梁 一 一 的博客">
-<meta property="og:url" content="https://xiangchiqingyu.github.io/index.html">
+  <meta name="description" content="力扣-289生命游戏（中等） 一、题干根据 百度百科 ，生命游戏，简称为生命，是英国数学家约翰·何顿·康威在 1970 年发明的细胞自动机。 给定一个包含 m × n 个格子的面板，每一个格子都可以看成是一个细胞。每个细胞都具有一个初始状态：1 即为活细胞（live），或 0 即为死细胞（dead）。每个细胞与其八个相邻位置（水平，垂直，对角线）的细胞都遵循以下四条生存定律： 如果活细胞周围八个位">
+<meta property="og:type" content="article">
+<meta property="og:title" content="力扣-289生命游戏（中等）">
+<meta property="og:url" content="https://xiangchiqingyu.github.io/2020/09/28/%E5%8A%9B%E6%89%A3-289%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/index.html">
 <meta property="og:site_name" content="梁 一 一 的博客">
+<meta property="og:description" content="力扣-289生命游戏（中等） 一、题干根据 百度百科 ，生命游戏，简称为生命，是英国数学家约翰·何顿·康威在 1970 年发明的细胞自动机。 给定一个包含 m × n 个格子的面板，每一个格子都可以看成是一个细胞。每个细胞都具有一个初始状态：1 即为活细胞（live），或 0 即为死细胞（dead）。每个细胞与其八个相邻位置（水平，垂直，对角线）的细胞都遵循以下四条生存定律： 如果活细胞周围八个位">
+<meta property="article:published_time" content="2020-09-28T13:51:30.605Z">
+<meta property="article:modified_time" content="2020-09-09T11:48:12.581Z">
 <meta property="article:author" content="梁 一 一">
 <meta name="twitter:card" content="summary">
   
@@ -135,679 +139,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-判断链表是否是环" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-力扣-289生命游戏（中等）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/28/%E5%88%A4%E6%96%AD%E9%93%BE%E8%A1%A8%E6%98%AF%E5%90%A6%E6%98%AF%E7%8E%AF/">判断链表是否是环</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/28/%E5%88%A4%E6%96%AD%E9%93%BE%E8%A1%A8%E6%98%AF%E5%90%A6%E6%98%AF%E7%8E%AF/" class="archive-article-date">
-  	<time datetime="2020-09-28T13:51:30.829Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>判断链表是否是环</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     struct ListNode *next;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">hasCycle</span><span class="params">(struct ListNode *head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(head == <span class="literal">NULL</span>||head-&gt;next == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">slow</span> = <span class="title">head</span>, *<span class="title">fast</span> = <span class="title">head</span>;</span></span><br><span class="line">    <span class="keyword">while</span>((fast != <span class="literal">NULL</span>) &amp;&amp; (fast-&gt;next != <span class="literal">NULL</span>)) &#123;</span><br><span class="line">        slow = slow-&gt;next;</span><br><span class="line">        fast = fast-&gt;next-&gt;next;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(slow == fast) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// struct ListNode *slow = head, *fast = head;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// while((fast-&gt;next != NULL)&amp;&amp;(fast != NULL))&#123;</span></span><br><span class="line">    <span class="comment">//     slow = slow-&gt;next;</span></span><br><span class="line">    <span class="comment">//     fast = fast-&gt;next-&gt;next;</span></span><br><span class="line">    <span class="comment">//     if(slow == fast)&#123;</span></span><br><span class="line">    <span class="comment">//         return true;</span></span><br><span class="line">    <span class="comment">//     &#125;</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    bool hasCycle(struct ListNode *head) &#123;</span></span><br><span class="line"><span class="comment">    /* 特判 */</span></span><br><span class="line">    <span class="comment">// if (head == NULL || head-&gt;next == NULL) &#123;</span></span><br><span class="line">    <span class="comment">//     return false;</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// struct ListNode *slow = head, *fast = head;</span></span><br><span class="line">    <span class="comment">// while((fast != NULL) &amp;&amp; (fast-&gt;next != NULL)) &#123;</span></span><br><span class="line">    <span class="comment">//     slow = slow-&gt;next;</span></span><br><span class="line">    <span class="comment">//     fast = fast-&gt;next-&gt;next;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//     if(slow == fast) &#123;</span></span><br><span class="line">    <span class="comment">//         return true;</span></span><br><span class="line">    <span class="comment">//     &#125;</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// return false;</span></span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/28/%E5%88%A4%E6%96%AD%E9%93%BE%E8%A1%A8%E6%98%AF%E5%90%A6%E6%98%AF%E7%8E%AF/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-力扣-双链表 环形链表（中等）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/28/%E5%8A%9B%E6%89%A3-%E5%8F%8C%E9%93%BE%E8%A1%A8%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/">力扣-双链表 环形链表（中等）</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/28/%E5%8A%9B%E6%89%A3-%E5%8F%8C%E9%93%BE%E8%A1%A8%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-09-28T13:51:30.815Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>力扣-双链表 环形链表（中等）</p>
-<h4 id="一、题干"><a href="#一、题干" class="headerlink" title="一、题干"></a>一、题干</h4><p>给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。</p>
-<p>为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。</p>
-<p>说明：不允许修改给定的链表。</p>
-<p>示例 1：</p>
-<p>输入：head = [3,2,0,-4], pos = 1<br>输出：tail connects to node index 1<br>解释：链表中有一个环，其尾部连接到第二个节点。</p>
-<p>示例 2：</p>
-<p>输入：head = [1,2], pos = 0<br>输出：tail connects to node index 0<br>解释：链表中有一个环，其尾部连接到第一个节点。</p>
-<p>示例 3：</p>
-<p>输入：head = [1], pos = -1<br>输出：no cycle<br>解释：链表中没有环。</p>
-<p>进阶：<br>你是否可以不用额外空间解决此题？</p>
-<h4 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     struct ListNode *next;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">struct ListNode *<span class="title">detectCycle</span><span class="params">(struct ListNode *head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(head == <span class="literal">NULL</span> || head-&gt;next == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> *<span class="title">slow</span> = <span class="title">head</span>, *<span class="title">fast</span> = <span class="title">head</span>;</span></span><br><span class="line">    <span class="keyword">while</span>(fast!=<span class="literal">NULL</span>&amp;&amp;fast-&gt;next!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">        fast = fast-&gt;next-&gt;next;</span><br><span class="line">        slow = slow-&gt;next;</span><br><span class="line">        <span class="keyword">if</span>(slow == fast)&#123;</span><br><span class="line">            flag = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//没有环</span></span><br><span class="line">    <span class="keyword">if</span>(flag == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//此时slow已经走了n*b步了，只需要再走a步（a+b*n是环的入口处）就可以，</span></span><br><span class="line">    <span class="comment">//但不知道a是多少让fast等于head陪着slow走，因为只要slow == fast了，就代表走了a步</span></span><br><span class="line">    fast = head;</span><br><span class="line">    <span class="keyword">while</span>(slow!=fast)&#123;</span><br><span class="line">        slow = slow-&gt;next;</span><br><span class="line">        fast = fast-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> slow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="三、题后总结"><a href="#三、题后总结" class="headerlink" title="三、题后总结"></a>三、题后总结</h4><p>这个题目是在判断链表有无环的题目上加了一点难度</p>
-<p>大部分代码是判断有无环的，最主要的代码已经注释了，还需要再看看，因为我看的时候叶只是一个大概。</p>
-<p>看力扣收藏的内容</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/28/%E5%8A%9B%E6%89%A3-%E5%8F%8C%E9%93%BE%E8%A1%A8%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-力扣-缺失的第一个正数（困难）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/28/%E5%8A%9B%E6%89%A3-%E7%BC%BA%E5%A4%B1%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%AD%A3%E6%95%B0%EF%BC%88%E5%9B%B0%E9%9A%BE%EF%BC%89/">力扣-缺失的第一个正数（困难）</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/28/%E5%8A%9B%E6%89%A3-%E7%BC%BA%E5%A4%B1%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%AD%A3%E6%95%B0%EF%BC%88%E5%9B%B0%E9%9A%BE%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-09-28T13:51:30.803Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>力扣-缺失的第一个正数（困难）</p>
-<h4 id="一、题干"><a href="#一、题干" class="headerlink" title="一、题干"></a>一、题干</h4><p>给你一个未排序的整数数组，请你找出其中没有出现的最小的正整数。</p>
-<p>示例 1:</p>
-<p>输入: [1,2,0]<br>输出: 3<br>示例 2:</p>
-<p>输入: [3,4,-1,1]<br>输出: 2<br>示例 3:</p>
-<p>输入: [7,8,9,11,12]<br>输出: 1</p>
-<p>提示：</p>
-<p>你的算法的时间复杂度应为O(n)，并且只能使用常数级别的额外空间。</p>
-<h4 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">firstMissingPositive</span><span class="params">(<span class="keyword">int</span>* nums, <span class="keyword">int</span> numsSize)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;numsSize;i++)&#123;</span><br><span class="line">        <span class="comment">//下面的这个核心思想属实是有点绕</span></span><br><span class="line">        <span class="keyword">while</span>(nums[i]&gt;<span class="number">0</span>&amp;&amp;nums[i]&lt;=numsSize+<span class="number">1</span>&amp;&amp;nums[i]!=nums[nums[i]<span class="number">-1</span>])&#123;</span><br><span class="line">            temp = nums[i];</span><br><span class="line">            nums[i] = nums[mid<span class="number">-1</span>];</span><br><span class="line">            nums[mid<span class="number">-1</span>] = mid;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//我发现这个题目是困难难度的题目</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    int firstMissingPositive(int* nums, int numsSize) &#123;</span></span><br><span class="line"><span class="comment">    //mid临时变量用于数据交换</span></span><br><span class="line"><span class="comment">    int mid = 0;</span></span><br><span class="line"><span class="comment">    //遍历nums数组</span></span><br><span class="line"><span class="comment">    for (int i = 0; i &lt; numsSize; i++)</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        //将 nums[i]:存储在下标为nums[i]-1位置,不符合该规则的跳过</span></span><br><span class="line"><span class="comment">        while ((nums[i] &gt; 0) &amp;&amp; (nums[i] &lt; numsSize + 1) &amp;&amp; (nums[i] != nums[nums[i] - 1])) &#123;</span></span><br><span class="line"><span class="comment">            mid = nums[i];</span></span><br><span class="line"><span class="comment">            nums[i] = nums[mid - 1];</span></span><br><span class="line"><span class="comment">            nums[mid - 1] = mid;</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    //设置返回值变量res,如果所有值位置都正确，则返回numsSize+1</span></span><br><span class="line"><span class="comment">    int res = numsSize + 1;</span></span><br><span class="line"><span class="comment">    //遍历数组，返回第一个位置不正确的数</span></span><br><span class="line"><span class="comment">    for (int i = 0; i &lt; numsSize; i++)</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        if (nums[i] != i + 1) &#123;</span></span><br><span class="line"><span class="comment">            res = i + 1;</span></span><br><span class="line"><span class="comment">            break;</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    return res;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="三、题后总结"><a href="#三、题后总结" class="headerlink" title="三、题后总结"></a>三、题后总结</h4><p>敲到一半发现是困难难度的，不过还是记录一下，以后有时间再来看吧</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/28/%E5%8A%9B%E6%89%A3-%E7%BC%BA%E5%A4%B1%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%AD%A3%E6%95%B0%EF%BC%88%E5%9B%B0%E9%9A%BE%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-力扣排序算法-1122数组的相对排序（简单）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/28/%E5%8A%9B%E6%89%A3%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-1122%E6%95%B0%E7%BB%84%E7%9A%84%E7%9B%B8%E5%AF%B9%E6%8E%92%E5%BA%8F%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/">力扣排序算法-1122数组的相对排序（简单）</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/28/%E5%8A%9B%E6%89%A3%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-1122%E6%95%B0%E7%BB%84%E7%9A%84%E7%9B%B8%E5%AF%B9%E6%8E%92%E5%BA%8F%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-09-28T13:51:30.784Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>力扣排序算法-1122数组的相对排序（简单）</p>
-<h4 id="一、题干"><a href="#一、题干" class="headerlink" title="一、题干"></a>一、题干</h4><p>给你两个数组，arr1 和 arr2，</p>
-<p>arr2 中的元素各不相同<br>arr2 中的每个元素都出现在 arr1 中<br>对 arr1 中的元素进行排序，使 arr1 中项的相对顺序和 arr2 中的相对顺序相同。未在 arr2 中出现过的元素需要按照升序放在 arr1 的末尾。</p>
-<p>示例：</p>
-<p>输入：arr1 = [2,3,1,3,2,4,6,7,9,2,19], arr2 = [2,1,4,3,9,6]<br>输出：[2,2,2,1,4,3,3,9,6,7,19]</p>
-<p>提示：</p>
-<p>arr1.length, arr2.length &lt;= 1000<br>0 &lt;= arr1[i], arr2[i] &lt;= 1000<br>arr2 中的元素 arr2[i] 各不相同<br>arr2 中的每个元素 arr2[i] 都出现在 arr1 中</p>
-<h4 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h4><p>版本1：自己的，内存溢出，不知道什么原因</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">relativeSortArray</span><span class="params">(<span class="keyword">int</span>* arr1, <span class="keyword">int</span> arr1Size, <span class="keyword">int</span>* arr2, <span class="keyword">int</span> arr2Size, <span class="keyword">int</span>* returnSize)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> hash[<span class="number">1001</span>];</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> *result = (<span class="keyword">int</span> *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">int</span>)*arr1Size);</span><br><span class="line">    <span class="comment">//读取重复数字的个数</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;arr1Size;i++)&#123;</span><br><span class="line">        hash[arr1[i]]++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//找到两个数组共有的数据</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;arr2Size;i++)&#123;</span><br><span class="line">        </span><br><span class="line">            <span class="keyword">while</span>(hash[arr2[i]] &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                result[k++] = arr2[i];</span><br><span class="line">                hash[arr2[i]]--;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;<span class="number">1001</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">while</span>(hash[i]&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            result[k++]=i;</span><br><span class="line">            hash[i]--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    *returnSize = arr1Size;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>版本2：别人的</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">relativeSortArray</span><span class="params">(<span class="keyword">int</span>* arr1, <span class="keyword">int</span> arr1Size, <span class="keyword">int</span>* arr2, <span class="keyword">int</span> arr2Size, <span class="keyword">int</span>* returnSize)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> arr[<span class="number">1001</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span> i,j=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;arr1Size;i++)&#123;<span class="comment">//记录arr1数字出现的次数次数</span></span><br><span class="line">        arr[arr1[i]]++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;arr2Size;i++)&#123;<span class="comment">//找到在arr2和arr1都出现的数字</span></span><br><span class="line">        <span class="keyword">while</span>(arr[arr2[i]]&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            arr1[j]=arr2[i];</span><br><span class="line">            j++;</span><br><span class="line">            arr[arr2[i]]--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">1001</span>;i++)&#123;<span class="comment">//找arr1有，arr2没有的</span></span><br><span class="line">        <span class="keyword">while</span>(arr[i]&gt;<span class="number">0</span>)&#123;</span><br><span class="line">            arr1[j++]=i;</span><br><span class="line">            arr[i]--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    *returnSize=arr1Size;</span><br><span class="line">    <span class="keyword">return</span> arr1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="三、题后总结"><a href="#三、题后总结" class="headerlink" title="三、题后总结"></a>三、题后总结</h4><p>这道题目比较简单的做法就是用哈希来计算数组1中重复的数字的个数，所以长经验了，以后碰到题目中涉及到重复数字的个数的题目都可以联想哈希，并且根据349题，其实要是想吧一个数组中的出现过的数记录起来，也可以用哈希，只不过不能要求进行排序，还有再使用数字哈希表的时候，因为是数组所以key&gt;=0，就是要有范围，这些做题使用那个算法和数据结构很重要的，一定要总结。</p>
-<p>这个题目我觉得还可以优化，用排序+哈希，或者是先判断数组1.2大小，当然只是有这个想法，等二刷的时候再来吧</p>
-<p>还要记得int k = 0 ；a[k++] = ….这个代码技巧</p>
-<h4 id="四、补充"><a href="#四、补充" class="headerlink" title="四、补充"></a>四、补充</h4><p>最近碰到几个内置函数，但是还不知道意思怎么用，先记下来</p>
-<p>qsort（排序）、memset（242题）</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/28/%E5%8A%9B%E6%89%A3%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-1122%E6%95%B0%E7%BB%84%E7%9A%84%E7%9B%B8%E5%AF%B9%E6%8E%92%E5%BA%8F%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-力扣-剑指offer16 数值的整数次方（中等）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/28/%E5%8A%9B%E6%89%A3-%E5%89%91%E6%8C%87offer16%20%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/">力扣-剑指offer16 数值的整数次方（中等）</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/28/%E5%8A%9B%E6%89%A3-%E5%89%91%E6%8C%87offer16%20%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-09-28T13:51:30.697Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>力扣-剑指offer16 数值的整数次方（中等）</p>
-<h4 id="一、题干"><a href="#一、题干" class="headerlink" title="一、题干"></a>一、题干</h4><p>实现函数double Power(double base, int exponent)，求base的exponent次方。不得使用库函数，同时不需要考虑大数问题。</p>
-<p>示例 1:</p>
-<p>输入: 2.00000, 10<br>输出: 1024.00000<br>示例 2:</p>
-<p>输入: 2.10000, 3<br>输出: 9.26100<br>示例 3:</p>
-<p>输入: 2.00000, -2<br>输出: 0.25000<br>解释: 2-2 = 1/22 = 1/4 = 0.25</p>
-<h4 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">myPow</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    	版本1</span></span><br><span class="line"><span class="comment">    **/</span></span><br><span class="line">    <span class="comment">// if(n == 0)&#123;</span></span><br><span class="line">    <span class="comment">//     return 1.00000;</span></span><br><span class="line">    <span class="comment">// &#125;else if(n&gt;0)&#123;</span></span><br><span class="line">    <span class="comment">//     return x*myPow(x,n-1);</span></span><br><span class="line">    <span class="comment">// &#125;else&#123;</span></span><br><span class="line">    <span class="comment">//     if(x == 0)&#123;</span></span><br><span class="line">    <span class="comment">//     return 0.00000;</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    <span class="comment">//     return (1/x)*myPow(x,n+1);</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    <span class="comment">// return x;</span></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    	版本2</span></span><br><span class="line"><span class="comment">    **/</span></span><br><span class="line">    <span class="comment">// if(n == 0)&#123;</span></span><br><span class="line">    <span class="comment">//     return 1.00000;</span></span><br><span class="line">    <span class="comment">// &#125;else if(n&gt;0)&#123;</span></span><br><span class="line">    <span class="comment">//     if(n == 1)&#123;</span></span><br><span class="line">    <span class="comment">//         return x*myPow(x,n-1);</span></span><br><span class="line">    <span class="comment">//     &#125;</span></span><br><span class="line">    <span class="comment">//     return x*x*myPow(x,n-2);</span></span><br><span class="line">    <span class="comment">// &#125;else&#123;</span></span><br><span class="line">    <span class="comment">//     if(x == 0)&#123;</span></span><br><span class="line">    <span class="comment">//     return 0.00000;</span></span><br><span class="line">    <span class="comment">//     &#125;</span></span><br><span class="line">    <span class="comment">//     if(n == -1)&#123;</span></span><br><span class="line">    <span class="comment">//         return (1/x)*myPow(x,n+1);</span></span><br><span class="line">    <span class="comment">//     &#125;</span></span><br><span class="line">    <span class="comment">//     return (1/x)*(1/x)*myPow(x,n+2);</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    <span class="comment">// return x;</span></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    	版本3</span></span><br><span class="line"><span class="comment">    **/</span></span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1.00000</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(n&gt;<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(n%<span class="number">2</span> == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> myPow(x,n/<span class="number">2</span>)*myPow(x,n/<span class="number">2</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(n == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> x*myPow(x,n<span class="number">-1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> x*myPow(x,n/<span class="number">2</span>)*myPow(x,n/<span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(n&lt;<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(n%<span class="number">2</span> == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> myPow(x,n/<span class="number">2</span>)*myPow(x,n/<span class="number">2</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(n == <span class="number">-1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> (<span class="number">1</span>/x)*myPow(x,n+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (<span class="number">1</span>/x)*myPow(x,n/<span class="number">2</span>)*myPow(x,n/<span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="三、题后总结"><a href="#三、题后总结" class="headerlink" title="三、题后总结"></a>三、题后总结</h4><p>一开始想到的是版本1，考虑的感觉比较全面了，但是版本1再面对大数据是内存溢出，然后又该了版本2，结果还是一样的数值内存溢出，最后看了一个评论，有了灵感就是将要求的数分为两部分，具体就不叙述，看代码比较简单理解。</p>
-<p>还有一个点就是昨天做的一个递归算法题也是因为大数据内存溢出了，后来是将A与B做了一点调换之后，才通过的，今天这个题目也是，所以做这种递归题目还是有规律可言的。</p>
-<p>不过今天做这个题目耗费的时间有点小长，就做了这一道题目。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/28/%E5%8A%9B%E6%89%A3-%E5%89%91%E6%8C%87offer16%20%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-力扣-剑指offer 青蛙跳台阶（简单）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/28/%E5%8A%9B%E6%89%A3-%E5%89%91%E6%8C%87offer%20%E9%9D%92%E8%9B%99%E8%B7%B3%E5%8F%B0%E9%98%B6%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/">力扣-剑指offer 青蛙跳台阶（简单）</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/28/%E5%8A%9B%E6%89%A3-%E5%89%91%E6%8C%87offer%20%E9%9D%92%E8%9B%99%E8%B7%B3%E5%8F%B0%E9%98%B6%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-09-28T13:51:30.686Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>力扣-剑指offer 青蛙跳台阶（简单）</p>
-<h4 id="一、题干"><a href="#一、题干" class="headerlink" title="一、题干"></a>一、题干</h4><p>一只青蛙一次可以跳上1级台阶，也可以跳上2级台阶。求该青蛙跳上一个 n 级的台阶总共有多少种跳法。</p>
-<p>答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。</p>
-<p>示例 1：</p>
-<p>输入：n = 2<br>输出：2<br>示例 2：</p>
-<p>输入：n = 7<br>输出：21</p>
-<h4 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">numWays</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">1</span>,b = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">int</span> num;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span> || n == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">2</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">3</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        num = (a+b)%<span class="number">1000000007</span>;</span><br><span class="line">        a = b;</span><br><span class="line">        b = num;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> num;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="三、题后总结"><a href="#三、题后总结" class="headerlink" title="三、题后总结"></a>三、题后总结</h4><p>这个题目其实和前面的那个跳楼梯是一个性质的题目，只不过那个当时因为测试用例太大没通过，就没有研究，结果通过这个题目给研究出来了，这样做其实也是递归来的，只不过就是换成了简单的数值，仔细看还是能看明白的。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/28/%E5%8A%9B%E6%89%A3-%E5%89%91%E6%8C%87offer%20%E9%9D%92%E8%9B%99%E8%B7%B3%E5%8F%B0%E9%98%B6%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-力扣-dfs检查平衡性（简单）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/28/%E5%8A%9B%E6%89%A3-dfs%E6%A3%80%E6%9F%A5%E5%B9%B3%E8%A1%A1%E6%80%A7%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/">力扣-dfs检查平衡性（简单）</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/28/%E5%8A%9B%E6%89%A3-dfs%E6%A3%80%E6%9F%A5%E5%B9%B3%E8%A1%A1%E6%80%A7%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-09-28T13:51:30.676Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>力扣-dfs检查平衡性（简单）</p>
-<h4 id="一、题干"><a href="#一、题干" class="headerlink" title="一、题干"></a>一、题干</h4><p>实现一个函数，检查二叉树是否平衡。在这个问题中，平衡树的定义如下：任意一个节点，其两棵子树的高度差不超过 1。</p>
-<p>示例 1:<br>给定二叉树 [3,9,20,null,null,15,7]<br>    3<br>   / <br>  9  20<br>    /  <br>   15   7<br>返回 true 。<br>示例 2:<br>给定二叉树 [1,2,2,3,3,null,null,4,4]<br>      1<br>     / <br>    2   2<br>   / <br>  3   3<br> / <br>4   4<br>返回 false 。</p>
-<h4 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     struct TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     struct TreeNode *right;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isBalanced</span><span class="params">(struct TreeNode* root)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!root)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">bool</span> result = <span class="literal">true</span>;</span><br><span class="line">    maxDepth(root,&amp;result);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(struct TreeNode* root,<span class="keyword">bool</span> *result)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!root)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> l = maxDepth(root-&gt;left,result);</span><br><span class="line">    <span class="keyword">int</span> r = maxDepth(root-&gt;right,result);</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">abs</span>(l-r)&gt;<span class="number">1</span>)&#123;</span><br><span class="line">        *result = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l&gt;r?l+<span class="number">1</span>:r+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    /**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     struct TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     struct TreeNode *right;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// int max(int a,int b)&#123;</span></span><br><span class="line"><span class="comment">//     return a&gt;b?a:b;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">// int maxDepth(struct TreeNode* root,bool *p_tmp)&#123;</span></span><br><span class="line"><span class="comment">//     if(!root) return 0;</span></span><br><span class="line"><span class="comment">//     int l,r;</span></span><br><span class="line"><span class="comment">//     l=maxDepth(root-&gt;left,p_tmp);</span></span><br><span class="line"><span class="comment">//     r=maxDepth(root-&gt;right,p_tmp);</span></span><br><span class="line"><span class="comment">//     //本质上还是计算深度，只是这里计算出左右节点的深度后，判断一下是否满足条件，不满足就记录下来</span></span><br><span class="line"><span class="comment">//     if(abs(l-r)&gt;1)</span></span><br><span class="line"><span class="comment">//     &#123;</span></span><br><span class="line"><span class="comment">//         *p_tmp=false;</span></span><br><span class="line"><span class="comment">//     &#125;</span></span><br><span class="line"><span class="comment">//     return max(l,r)+1;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">// bool isBalanced(struct TreeNode* root)&#123;</span></span><br><span class="line"><span class="comment">//     if(!root) return true;</span></span><br><span class="line"><span class="comment">//     bool tmp=true;</span></span><br><span class="line"><span class="comment">//     maxDepth(root,&amp;tmp);</span></span><br><span class="line"><span class="comment">//     return tmp;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h4><p>这个代码是包括了我借鉴的代码，第一次做关于树的题目，太难了</p>
-<p>本质上还是计算深度，只是这里计算出左右节点的深度后，判断一下是否满足条件，不满足就记录下来</p>
-<p>这句话还是说的很到位，就是这样，求树的深度的代码再我的笔记上也有，都是一样的，只不过多加了一个判断，这个ads函数是定义在stdlib.h头文件中，用来整数取绝对值的。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/28/%E5%8A%9B%E6%89%A3-dfs%E6%A3%80%E6%9F%A5%E5%B9%B3%E8%A1%A1%E6%80%A7%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-力扣-1431 拥有糖果最多的孩子（简单)（数组）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/28/%E5%8A%9B%E6%89%A3-1431%20%E6%8B%A5%E6%9C%89%E7%B3%96%E6%9E%9C%E6%9C%80%E5%A4%9A%E7%9A%84%E5%AD%A9%E5%AD%90%EF%BC%88%E7%AE%80%E5%8D%95)%EF%BC%88%E6%95%B0%E7%BB%84%EF%BC%89/">力扣-1431 拥有糖果最多的孩子（简单)（数组）</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/28/%E5%8A%9B%E6%89%A3-1431%20%E6%8B%A5%E6%9C%89%E7%B3%96%E6%9E%9C%E6%9C%80%E5%A4%9A%E7%9A%84%E5%AD%A9%E5%AD%90%EF%BC%88%E7%AE%80%E5%8D%95)%EF%BC%88%E6%95%B0%E7%BB%84%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-09-28T13:51:30.667Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>力扣-1431 拥有糖果最多的孩子（简单)（数组）</p>
-<h4 id="一、题干描述"><a href="#一、题干描述" class="headerlink" title="一、题干描述"></a>一、题干描述</h4><p>给你一个数组 candies 和一个整数 extraCandies ，其中 candies[i] 代表第 i 个孩子拥有的糖果数目。</p>
-<p>对每一个孩子，检查是否存在一种方案，将额外的 extraCandies 个糖果分配给孩子们之后，此孩子有 最多 的糖果。注意，允许有多个孩子同时拥有 最多 的糖果数目。</p>
-<p>示例 1：</p>
-<p>输入：candies = [2,3,5,1,3], extraCandies = 3<br>输出：[true,true,true,false,true]<br>解释：<br>孩子 1 有 2 个糖果，如果他得到所有额外的糖果（3个），那么他总共有 5 个糖果，他将成为拥有最多糖果的孩子。<br>孩子 2 有 3 个糖果，如果他得到至少 2 个额外糖果，那么他将成为拥有最多糖果的孩子。<br>孩子 3 有 5 个糖果，他已经是拥有最多糖果的孩子。<br>孩子 4 有 1 个糖果，即使他得到所有额外的糖果，他也只有 4 个糖果，无法成为拥有糖果最多的孩子。<br>孩子 5 有 3 个糖果，如果他得到至少 2 个额外糖果，那么他将成为拥有最多糖果的孩子。<br>示例 2：</p>
-<p>输入：candies = [4,2,1,1,2], extraCandies = 1<br>输出：[true,false,false,false,false]<br>解释：只有 1 个额外糖果，所以不管额外糖果给谁，只有孩子 1 可以成为拥有糖果最多的孩子。<br>示例 3：</p>
-<p>输入：candies = [12,1,12], extraCandies = 10<br>输出：[true,false,true]</p>
-<h4 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span>* <span class="title">kidsWithCandies</span><span class="params">(<span class="keyword">int</span>* candies, <span class="keyword">int</span> candiesSize, <span class="keyword">int</span> extraCandies, <span class="keyword">int</span>* returnSize)</span></span>&#123;</span><br><span class="line">    <span class="keyword">bool</span> *result;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">max</span> = <span class="number">0</span>;</span><br><span class="line">    result = (<span class="keyword">bool</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">bool</span>)*candiesSize);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;candiesSize;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(candies[i]&gt;<span class="built_in">max</span>)&#123;</span><br><span class="line">            <span class="built_in">max</span> = candies[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j&lt;candiesSize;j++)&#123;</span><br><span class="line">        result[j] = candies[j]+extraCandies&gt;=<span class="built_in">max</span>?<span class="literal">true</span>:<span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    *returnSize = candiesSize;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="三、题后总结"><a href="#三、题后总结" class="headerlink" title="三、题后总结"></a>三、题后总结</h4><p>几天没做思路有点跟不上了，这道题一开始想复杂了，都用到了双重循环了，后来为了不浪费时间就官方，才发现自己想的太复杂了，所以思路要不时的换一换。看到很多人再刷C语言汇编那本书了，开始有压力了，有点想追求速度，但是只有稳重点才有机会。</p>
-<p>这道题的收获就是一个小功能模块正好刚才看书时候也看到了，就是通过打擂法来获取数组最大值，在树上看到的时候没在意，在做题的时候发现自己不能很快的写出这个小功能，就像着把一些常用的功能记一下，以便再考试的时候能带来一点优势。同时要注意这个代码中是不能用静态方法创建数组的，因为candiesSize是形参，只能动态创建。</p>
-<h5 id="打擂法获取数组最大值"><a href="#打擂法获取数组最大值" class="headerlink" title="打擂法获取数组最大值"></a>打擂法获取数组最大值</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> <span class="built_in">max</span> = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> n = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;candiesSize;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(candies[i]&gt;<span class="built_in">max</span>)&#123;</span><br><span class="line">            <span class="built_in">max</span> = candies[i];</span><br><span class="line">            n = i;<span class="comment">//n用来获取取得最大值的位置</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/28/%E5%8A%9B%E6%89%A3-1431%20%E6%8B%A5%E6%9C%89%E7%B3%96%E6%9E%9C%E6%9C%80%E5%A4%9A%E7%9A%84%E5%AD%A9%E5%AD%90%EF%BC%88%E7%AE%80%E5%8D%95)%EF%BC%88%E6%95%B0%E7%BB%84%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-力扣-922 按奇偶排序数组Ⅱ（简单）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/28/%E5%8A%9B%E6%89%A3-922%20%E6%8C%89%E5%A5%87%E5%81%B6%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E2%85%A1%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/">力扣-922 按奇偶排序数组Ⅱ（简单）</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/28/%E5%8A%9B%E6%89%A3-922%20%E6%8C%89%E5%A5%87%E5%81%B6%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E2%85%A1%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-09-28T13:51:30.626Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>力扣-922 按奇偶排序数组Ⅱ（简单）</p>
-<h4 id="一、题干"><a href="#一、题干" class="headerlink" title="一、题干"></a>一、题干</h4><p>给定一个非负整数数组 A， A 中一半整数是奇数，一半整数是偶数。</p>
-<p>对数组进行排序，以便当 A[i] 为奇数时，i 也是奇数；当 A[i] 为偶数时， i 也是偶数。</p>
-<p>你可以返回任何满足上述条件的数组作为答案。</p>
-<p>示例：</p>
-<p>输入：[4,2,5,7]<br>输出：[4,5,2,7]<br>解释：[4,7,2,5]，[2,5,4,7]，[2,7,4,5] 也会被接受。</p>
-<p>提示：</p>
-<p>2 &lt;= A.length &lt;= 20000<br>A.length % 2 == 0<br>0 &lt;= A[i] &lt;= 1000</p>
-<h4 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span>* <span class="title">sortArrayByParityII</span><span class="params">(<span class="keyword">int</span>* A, <span class="keyword">int</span> ASize, <span class="keyword">int</span>* returnSize)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;ASize;i+=<span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>;j&lt;ASize;j+=<span class="number">2</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>((A[i]+<span class="number">2</span>)%<span class="number">2</span>!=<span class="number">0</span>&amp;&amp;A[j]%<span class="number">2</span>==<span class="number">0</span>)&#123;</span><br><span class="line">                    temp = A[i];</span><br><span class="line">                    A[i] = A[j];</span><br><span class="line">                    A[j] = temp;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        *returnSize = ASize;</span><br><span class="line">        <span class="keyword">return</span> A;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="三、题后总结"><a href="#三、题后总结" class="headerlink" title="三、题后总结"></a>三、题后总结</h4><p>这道题目没有想出来，看了评论知道的两种办法第一种就是我这种的放弃了运行时间，来降低内存消耗。</p>
-<p>还有第二种就是运行时间快，但是内存消耗打，思路是先遍历数组把奇数和偶数分别帅选出来。其实第一种方法用到的是双指针，但是我这个不算是双指针。</p>
-<p>我感觉下面的这个方法挺好的</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] sortArrayByParityII(<span class="keyword">int</span>[] A) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">1</span>; i &lt; A.length &amp;&amp; j &lt; A.length; i += <span class="number">2</span>, j += <span class="number">2</span>) &#123;</span><br><span class="line">			<span class="keyword">while</span>(i &lt; A.length &amp;&amp; A[i] % <span class="number">2</span> == <span class="number">0</span>) i += <span class="number">2</span>;</span><br><span class="line">			<span class="keyword">while</span>(j &lt; A.length &amp;&amp; A[j] % <span class="number">2</span> == <span class="number">1</span>) j += <span class="number">2</span>;</span><br><span class="line">			<span class="keyword">if</span>(i &lt; A.length &amp;&amp; j &lt; A.length) &#123;</span><br><span class="line">				<span class="keyword">int</span> temp = A[i];</span><br><span class="line">				A[i] = A[j];</span><br><span class="line">				A[j] = temp;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> A;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-<p>写的格式一看就感觉很牛逼，😂</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/28/%E5%8A%9B%E6%89%A3-922%20%E6%8C%89%E5%A5%87%E5%81%B6%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E2%85%A1%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-力扣-289生命游戏（中等）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/28/%E5%8A%9B%E6%89%A3-289%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/">力扣-289生命游戏（中等）</a>
+    <h1 class="article-title" itemprop="name">
+      力扣-289生命游戏（中等）
     </h1>
   
 
@@ -837,6 +176,32 @@
       
 
       
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/ad.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
     <div class="article-info article-info-index">
       
@@ -844,16 +209,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/28/%E5%8A%9B%E6%89%A3-289%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://xiangchiqingyu.github.io/2020/09/28/%E5%8A%9B%E6%89%A3-289%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/09/28/%E5%8A%9B%E6%89%A3-922%20%E6%8C%89%E5%A5%87%E5%81%B6%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E2%85%A1%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          力扣-922 按奇偶排序数组Ⅱ（简单）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/09/28/%E5%8A%9B%E6%89%A3-283%E7%A7%BB%E5%8A%A8%E9%9B%B6%EF%BC%88%E7%AE%80%E5%8D%95%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">力扣-283移动零（简单）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -873,12 +306,33 @@
 
 
 
+  
+  
+  
 
   
+
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">  
+
+<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "https://xiangchiqingyu.github.io/2020/09/28/%E5%8A%9B%E6%89%A3-289%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F%EF%BC%88%E4%B8%AD%E7%AD%89%EF%BC%89/",
+  owner: 'xiangchiqingyu',
+  repo: ' xiangchiqingyu.github.io ',
+  oauth: {
+    client_id: ' 0365e984bc4b5d536c50 ',
+    client_secret: ' fc4cf7149ebcb5b1ff5c908b2986db639a3df011 ',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+
+
   
 
 
@@ -904,8 +358,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
